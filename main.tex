@@ -1,0 +1,118 @@
+\documentclass[10pt]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{adjustbox}
+% Identificação
+\newcommand{\thetitle}{Pre Clustering strategy using firmographics features on a recommender system, a case study at Neoway.}
+\newcommand{\theauthor}{Matheus Frata}
+\newcommand{\theadvisor}{André Carvalho Bittencourt}
+%\newcommand{\thecoadvisor}{Co-orientador}
+\newcommand{\theplace}{Florianópolis}
+\newcommand{\thedate}{2019}
+
+
+% Paper geometry
+\usepackage[a5paper]{geometry}
+\geometry{tmargin=20mm, bmargin=15mm,
+  lmargin=25mm, rmargin=15mm,
+  % lmargin=20mm, rmargin=20mm, % Texto centralizado
+  headheight=7mm, footskip=7mm}
+
+% Graphics
+\usepackage{graphicx}
+\graphicspath{{fig/}}
+\usepackage[font=small]{caption}
+\usepackage[font=footnotesize]{subcaption}
+\usepackage{color}
+% Latin Modern font
+\usepackage{lmodern}
+
+% Hyperref configuration % Not necessary
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={\thetitle},
+  pdfauthor={\theauthor}}
+
+% Reformats section and subsection titles
+\usepackage{sectsty}
+\sectionfont{\sffamily\large}
+\subsectionfont{\sffamily\normalsize}
+\partfont{\sffamily\Huge}
+
+% Fancy chapter
+\usepackage[Sonny]{fncychap}
+
+% Fancy header customization
+\usepackage{fancyhdr}
+\fancyhead{} % Clear all header fields
+\fancyfoot{} % Clear all footer fields
+\fancyhead[EL]{\sffamily\footnotesize{\thepage}}   % even, left
+\fancyhead[ER]{\sffamily\footnotesize{\leftmark}}  % even, right
+\fancyhead[OL]{\sffamily\footnotesize{\rightmark}} % odd, left
+\fancyhead[OR]{\sffamily\footnotesize{\thepage}}   % odd, right
+\pagestyle{fancy}
+
+% Removes headers and footers for pages between chapters
+\usepackage{emptypage}
+
+% Line spacing
+\usepackage{setspace}
+\setstretch{1.1}
+\renewcommand{\arraystretch}{1.25}
+
+% Change numbered lists to lowercase roman numerals
+\usepackage{enumerate}
+\renewcommand{\labelenumi}{(\textit{\roman{enumi}})}
+\newcounter{tmpc} % This is for resuming an 'enumerate' list
+
+\newcommand{\cleardoublepageempty}{\clearpage
+  {\pagestyle{empty}\cleardoublepage}
+}
+
+% incluir referencias bibliográficas no sumário
+\usepackage[nottoc,notlot,notlof]{tocbibind} 
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{float}
+
+\newcommand{\An}{A_{\text{n}}}
+\newcommand{\Acn}{A_{c\text{n}}}
+
+%\include{preamble}
+
+
+%% Body
+\begin{document}
+  \input{pre/cover-cool}
+					 
+  \pagenumbering{roman} 
+  \input{pre/cover}
+  \input{pre/ficha-catalografica}
+  \input{pre/signatures}
+  \input{pre/dedication}
+  \input{pre/acknowledgment}
+  \input{pre/epigraph}
+  \input{pre/abstract}
+  \input{pre/symbols}
+  \input{pre/table-of-contents}
+  \label{pg:roman-count}
+  \cleardoublepage
+
+  \pagenumbering{arabic}
+  \input{content/introduction}
+  \input{content/chapter2}
+  \input{content/chapter3}
+  \input{content/chapter4}
+  \input{content/chapter5}
+  \input{content/chapter6}
+  \input{content/conclusion}
+  \input{content/bibliography}
+  \appendix
+  \input{content/appendix}
+  \label{pg:arabic-count}
+  \cleardoublepage
+\end{document}

@@ -1,0 +1,18 @@
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{bm}
+\usepackage{thmtools}
+
+\makeatletter
+\def\blfootnote{\gdef\@thefnmark{}\@footnotetext}
+\makeatother
+
+% THEOREMS
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{lemma}[theorem]{Lema}
+\newtheorem{corollary}[theorem]{Corolário}
+\newtheorem{claim}[theorem]{Afirmação}
+\newtheorem{fact}[theorem]{Fato}
+\newtheorem{proposition}[theorem]{Proposição}
+\newenvironment{example}[1][Exemplo. ]{\medskip\par\noindent\textsc{#1}}{\qed\par\medskip}
+\newenvironment{definition}{\medskip\par\noindent\textsc{Definição.}}{\par\medskip}
+\newenvironment{remark}{\medskip\par\noindent\textit{Observação:}}{\par\medskip}
