@@ -32,11 +32,53 @@ Finally, there is the \textbf{hybrid} type, where the Recommendation System is b
 
 The RSs are present on a myriad of online services today, bringing great value to them. Streaming platforms of music and videos have RSs on their business to increase user retention and engagement such as: 75\% of what people watch on Netflix come from recommendations \cite{HowretailerscankeepupwithconsumersMcKinsey} or that 70\% of people's time spent on YouTube comes from the recommendation of "the Algorithm" \cite{CES2018YouTubesAIrecommendationsdrive70percentofviewingCNET}. Social medias and reading platforms apply these same concepts on their "feed" for the same reasons of streaming platforms, user retention and engagement. E-commerce, on the other hand, want to increase their revenue by recommending similar products, or products that the "same type of customer purchased" when a potential customer is navigating on their online shop. Amazon is a great example of this: 35\% of the purchases on their online shopping come from recommendations \cite{HowretailerscankeepupwithconsumersMcKinsey}. There is even the use of RSs on online dating services \cite{brozovsky2007recommender}, where the RS improve the experience of the user in the search of potential partner while at the same time increasing the monetization of the service. All of these business make use of this technology, but there is also the ones that gave back to the research of RS.
 
-Netflix  is one of the companies that are references on this type of system. They have a variety of algorithms on their RS. And due to the high user base, they can test their results using A/B testing and feedback from the users \cite{gomez2016netflix}. On 2006 they launched a competition, called the Netflix Prize, where the objective was to improve the accuracy of the recommendations by 10\%. The winner would win US\$ 1.000.000. There were more than 2.000 teams and more than 40.000 submissions on their platform. The Netflix prize was an important event to the RSs in general because it increased the awareness of this technology, and its importance to business, worldwide. 
+Netflix is one of the companies that are references on this type of system. They have a variety of algorithms on their RS. And due to the high user base, they can test their results using A/B testing and feedback from the users \cite{gomez2016netflix}. On 2006 they launched a competition, called the Netflix Prize, where the objective was to improve the accuracy of the recommendations by 10\%. The winner would win US\$ 1.000.000. There were more than 2.000 teams and more than 40.000 submissions on their platform. The Netflix prize was an important event to the RSs in general because it increased the awareness of this technology, and its importance to business, worldwide. 
 
 \subsection{Evaluation}
 
-sdadashdasdasdasdadas
+There are several ways to evaluate the performance of a recommender system: normalized Discounted Cumulative Gain (nDCG) \cite{jarvelin2002cumulated}, Precision \cite{Precision-rs-metric}, Recall \cite{cremonesi2010performance} when "looking" to the RS with a ranking perspective; Mean Absolute Error (MAE) \cite{breese1998empirical} and Root Mean Squared Error (RMSE) \cite{bennett2007netflix} when "looking" to the RS with a rating perspective; A/B testing when you have a high client base that guarantee statistical relevance and others \cite{parra2013recommender}. To evaluate the Neoway's Recommender system it was chosen the Lift.
+
+Lift is a ratio between probabilities. The probability of selecting one of the target population after the RS sorting versus the random  chance (before the RS sorting). The lift, usually, is calculated on quantiles. \cite{LiftAnalysisADataScientistsSecretWeapon}.
+\begin{equation}
+% TODO fix the non space on the formula
+	lift = \frac{RS sorting prob}{random chance}
+\end{equation}
+
+To illustrate further, let's use an example of a box with colored balls. Imagine that there is a rectangular box where its height and depth allows only a single ball to fit, but its width allows up to 100 balls. There are two types of balls: the \textbf{red} ones that represent our \textbf{target population} and the blue ones. 90 of the 100 balls are blue and the remaining 10 are red. Moreover, this box is divided into sectors where each sector is a decile, meaning that there are 10 sectors, each one with 10 balls. The sectors, also, have a priority, they from left to right. The Figure \ref{fig:rec-box} shows hows this box looks like.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=\linewidth]{fig/ch2-rec-box.png}
+   \caption{Rectangular box. Upper view (above), Front view (below).  Source: Author}
+   \label{fig:rec-box}
+\end{figure}
+
+Without seeing inside the box, the probability of retrieving a red ball is 10 out of 100, or \textbf{10\%}. This is our \textbf{random chance} and it is the same probability for each decile. Now lets consider that someone reordered the balls (representing the RS), trying to place the red ones on first deciles. The Figure \ref{fig:rec-box-ordering} shows the box before and after the reordering.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=\linewidth]{fig/ch2-rec-box-ordering.jpg}
+   \caption{Reordering of the balls. Before (above) and after (below). Source: Author}
+   \label{fig:rec-box-ordering}
+\end{figure}
+
+After the reordering, we recalculate the probabilities of retrieving a red ball for each decile. We can see on Figure \ref{fig:rec-box-ordering}, that there are 4 red balls on the first decile, 3 on the second, 2 on the third and 1 on the fourth. With this information we have the following probabilities, respectively: 40\%, 30\%, 20\%, 10\% and 0\% to the remaining deciles. Now the lift for the deciles can be calculated, for the first one is:
+\begin{equation}
+	lift_{1\textsuperscript{o} decile} = \frac{0.4}{0.1} = 4
+\end{equation}
+
+Using the same approach, we calculate the lift for the others deciles, respectively: 3, 2, 1, and 0 to the remaining ones. The Figure \ref{fig:lift-plot} shows a plot of the values of the lift for each decile.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=9cm]{fig/ch2-lift-plot.png}
+   \caption{Lift plot for the reordered box with the random chance. Source: Author}
+   \label{fig:lift-plot}
+\end{figure}
+
+We can see that it is more likely to pick a red ball on the firsts sectors of our box (deciles) than the last ones. Actually, there is a zero probability to get a red ball after the fourth decile. And this is the expected behavior, since in an information retrieval system (IRS), we want all the relevant information on the top (in our case: on the left). Hence, only the first N-quantiles (in our case: N = 10) are considered and the rest is discarded. How many to consider? The designer of the system should decide. It depends on how much information is retrieved and how much is processed by the user.
+
+With this example, another way to interpret the lift is:  how many times better than the random chance is to get relevant information on the firsts N-quantiles ordered by an IRS. On the recommendations context the information is an item recommended and the IRS is the recommender system.
 
 \section{Clustering}
 
