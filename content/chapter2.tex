@@ -82,7 +82,19 @@ With this example, another way to interpret the lift is:  how many times better 
 
 \section{Clustering}
 
-\subsection{Principal component Analysis}
+% what % why
+Cluster Analysis is a unsupervised learning technique where its objective is to find a finite and discrete set of "hidden" structure on a dataset \cite{xu2008clustering}. These structures or pattern can help to better understand data or prepare it to an algorithm, even though not having labels. Clustering, also, can be a way to represent large data in a given number of clusters - compressing the data. 
+
+% where
+This technique is applied on a several fields \cite{sabine2001cluster}. For instance, on Engineering and Computer Science, clustering is used on speech recognition, information compression, noise removal; On biology, the applications are: genetics, taxonomy, microbiology and others; It, also, happens upon Astronomy and Geography on classification of galaxies, planets for the former and classification of regions, areas, vegetation and land for the latter.
+
+% how
+There are some approaches to cluster a dataset \cite{wikipedia_cluster_analysis}. The \textbf{Connectivity based} one looks for the closeness of two objects, meaning that it forms the clusters based on their distance which can be computed with different ways like the complete (maximum distances) or simple (minimum distance) linkage methods. The \underline{Hierarchical Clustering} is an example of algorithm that uses this approach; On \textbf{Centroid-based} clustering the data is represent by a vector of centroids - we can think of them like center of mass - one for each cluster. The \underline{KMeans} algorithm (and its variations), uses this approach; The \textbf{Distribution-based} approach focus on the statistics of the dataset. It groups together objects that have similar distributions. The algorithms to exemplify this are the \underline{Gaussian Mixture} and its \underline{Bayesian} variation; Another one is the \textbf{Density based} clustering where the data is grouped on the high density areas. Points that are to far away are considered outliers and don't go to any cluster. Common algorithms are the \underline{DBSCAN} and the \underline{OPTICS}.
+
+There is no single best algorithm on cluster analysis \cite{james2013introduction}. All of these presented, have pros and cons and are fit to different kind of problems. Some are suited to find the number of clusters but at the same time don't scale with a high volume of data (Hierarchical), others are fast and simple but they have to know the number clusters in advance (KMeans). Hence, its important to test different algorithms and its parameters to see if the analysis perform on a given problem.
+% Didn't like this last sentence
+
+\section{Principal component Analysis}
 
 exemple equation
 \begin{equation}
