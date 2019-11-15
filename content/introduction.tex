@@ -4,18 +4,18 @@
 \fancyhead[ER]{\sffamily\footnotesize{\leftmark}}
 \fancyhead[OL]{\sffamily\footnotesize{\rightmark}}
 
-Neoway Business Solution is a big data analytics company with a variety of products to several verticals such as Sales and Marketing, Risk and Compliance, Health and others. One of the products of the Sales and Marketing vertical is the OnTarget(OT), which its main objective is to recommend leads for the users, based on their portfolio of clients. The OT will search for leads in a subset of the whole Brazilian's market space, which is composed by all active companies. The user can narrow down the search space based on a set of filters. The Figure \ref{fig:braz-comps-venn-diagram} shows a Venn diagram that illustrate the subsets of the OnTarget. The \underline{Portfolio} set is composed by the user's clients; The \underline{Market} is where the OnTarget will search for the leads, it can vary from a set defined by the filters to all the Brazilian active companies (except the user's clients).
+Neoway Business Solution is a big data analytics company with a variety of products on several verticals such as Sales and Marketing, Risk and Compliance, Health and others. One of the products of the Sales and Marketing vertical is called On Target(OT), which recommends leads for the users, based on their portfolio of clients. The OT will search for leads in a subset of the whole Brazilian's market space, which is composed by all active companies. The user can narrow down the search space based on a set of filters. The Figure \ref{fig:braz-comps-venn-diagram} shows a Venn diagram that illustrate the subsets of the OnTarget. The \underline{Portfolio} set is composed by the user's clients; The \underline{Market} is where the OnTarget will search for the leads, it can vary from a set defined by the filters to all the Brazilian active companies (except the user's clients).
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=9cm]{fig/int-brazil-comps-venn-diagram.jpg}
-   \caption{Vein Diagram explaining the sets involved on the OnTarget product. Source: Author.}
+   \caption{Venn Diagram explaining the sets involved in the On Target product. Source: Author.}
    \label{fig:braz-comps-venn-diagram}
 \end{figure}
 
-Recently the algorithm had an update, and a benchmark was made to compare the two versions. Overall the new version showed an improve in the performance of the generation of leads. However, at same time, with the benchmark some studies presented some strange behavior. The Figure \ref{fig:simi-dist-expected-real} shows two similarity distributions plots from the benchmark. Similarity is how similar a company on the market is with the user's clients, it ranges from 0 to 1. The blue curve shows the market distribution and the orange one the portfolio's sample distribution.\footnote{More about the similarity distribution plot will be explained on the chapter \ref{ch:methodology}.}
+Recently, OT was updated, and a benchmark was created to compare between different versions. Overall the new version showed an improvement in the performance of lead generation. However, at the same time, the new version yielded unexpected behavior, which suggests that the portfolio may present underlying clusters. The last point can be understood through Figure \ref{fig:simi-dist-expected-real} which shows two similarity distributions plots from the benchmark. Similarity is how similar a company on the market is with the user's clients, it ranges from 0 to 1. The blue curve shows the market distribution and the orange one the portfolio's sample distribution.\footnote{More about the similarity distribution plot will be explained on the chapter \ref{ch:methodology}.}
 % OBS: "high density probabilities areas" = "bump"
-(I) is the best case scenario of a study, where all the portfolio's samples are close to similarity 1; The market has two high density probabilities areas: one close to similarity 0 and other close to similarity one, in others words, some companies have no fit with the portfolio and others are alike the portfolio. The latter is the high quality leads to recommend to the user. (II) is an example of a study with a strange behavior. The portfolio's sample distribution has two high densities probabilities locations along the x-axis leading the algorithm to not generate high quality leads (market companies with similarity close to 1). 
+(I) is the best case scenario of a study, where all the portfolio's samples are close to similarity 1; The market has two high density probabilities areas: one close to similarity 0 and other close to similarity one, in others words, some companies have no fit with the portfolio and others are alike the portfolio. The latter is the high quality leads to recommend to the user. (II) is an example of a study with unexpected behavior. The portfolio's sample distribution has two high densities probabilities locations along the x-axis leading the algorithm to not generate high quality leads (market companies with similarity close to 1).
 
 %TODO I think the last phrase of this paragraph can be improved.
 One hypothesis of the OnTarget team is that in this study (and others alike) the client has a heterogeneous portfolio, meaning that it can have two or more distinct profiles in it. The algorithm tries to optimize for the mean profile of the whole portfolio but, maybe, this may not the optimal solution.
@@ -27,24 +27,26 @@ One hypothesis of the OnTarget team is that in this study (and others alike) the
    \label{fig:simi-dist-expected-real}
 \end{figure}
 
-This work is one of the several improvements for the OnTarget product road map. And its objective is to analyze if the overall performance of the high quality leads generation improves by clustering the portfolio before running the recommendation algorithm. 
+This work is one of the several improvements in the On Target product road map. The objective is to analyze whether the overall performance of the high quality leads generation improves by clustering the portfolio before running the recommendation algorithm. 
 
-In order to preserve interpretability the clustering will not take place with all the features available. It will be used only firmographics \cite{wikipedia_firmographics} variables which are related to demographics and geographical variables. For instance, company size, location, number of employees and others. 
+In order to preserve interpretability, the clustering procedure will not include all available features . Only firmographics variables will be used\cite{wikipedia_firmographics} variables which are related to characteristics of a business, such as: company size, location, number of employees and others. 
 
 \section{Objectives}
 
 \subsection{General Objectives}
 
-Analyze if the performance of the OnTarget improves by clustering the portfolio with firmographics variables before running the recommendation algorithm.
+The general objective of this work is to analyze whether if the performance of the OnTarget improves by clustering the portfolio with firmographics variables before running the recommendation algorithm.
 
 \subsection{Specific Objectives}
 
+Specific objectives of this work are:
+
 \begin{itemize}
-    \item Define the clustering strategy.
-	\item Define the clustering algorithm.
-    \item Define the number of clusters on the studies.
-    \item Run the benchmark for the OnTarget with the clustering changes.
-    \item Analyze the metrics and graphics of the benchmark.
+    \item defining the clustering strategy;
+	\item defining the clustering algorithm;
+    \item defining the number of clusters on the studies;
+    \item running OnTarget against the benchmark with the clustering approach; and
+    \item analyzing similarity distributions and performance metrics against the benchmark.
 \end{itemize}
 
 
