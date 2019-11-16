@@ -1,4 +1,5 @@
-\chapter{Introduction} \label{ch:introduction}
+\chapter{Introduction} 
+\label{ch:introduction}
 
 % Because of a bug --- Restore original headers:
 \fancyhead[ER]{\sffamily\footnotesize{\leftmark}}
@@ -17,7 +18,6 @@ Recently, OT was updated, and a benchmark was created to compare between differe
 % OBS: "high density probabilities areas" = "bump"
 (I) is the best case scenario of a study, where all the portfolio's samples are close to similarity 1; The market has two high density probabilities areas: one close to similarity 0 and other close to similarity one, in others words, some companies have no fit with the portfolio and others are alike the portfolio. The latter is the high quality leads to recommend to the user. (II) is an example of a study with unexpected behavior. The portfolio's sample distribution has two high densities probabilities locations along the x-axis leading the algorithm to not generate high quality leads (market companies with similarity close to 1).
 
-%TODO I think the last phrase of this paragraph can be improved.
 One hypothesis of the OnTarget team is that in this study (and others alike) the client has a heterogeneous portfolio, meaning that it can have two or more distinct profiles in it. The algorithm tries to optimize for the mean profile of the whole portfolio but, maybe, this may not the optimal solution.
 
 \begin{figure}
