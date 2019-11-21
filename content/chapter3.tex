@@ -9,7 +9,7 @@ Before getting to the clustering and experiment procedures, it is important to d
 
 \subsection{On Target}
 
-The On Target is one of the Neoway's products of the vertical of Sales and Marketing. It is a content-based recommender system that searches for leads based on the customers' profile of the user. The OT receives as input:
+The On Target is one of the Neoway's products of the vertical of B2B Sales and Marketing. Neoway's customers, which are business, use the OT to look for other business that have the potential to become their customer. It achieves that through content-based recommendations, strictly speaking, the OT searches for potential costumers for Neoway's clients based on their clients. To create the recommendations OT need the following inputs:
 \begin{itemize}
     \item the \textbf{Portfolio}, which is the list of companies that are customers of the OT user. It can range from a few dozens to dozens of thousands companies;
     \item the \textbf{Market}, which is the list of companies where the OT will search for the leads. It can range from dozens to tens of millions companies; and
@@ -37,7 +37,7 @@ The Benchmark does some minor modification on the OT pipeline. It removes a rand
    \label{fig:ot-benchmark-blocks}
 \end{figure}
 
-These changes on the pipeline are to generate the metrics to evaluate the experiments in two ways. The first one, is the performance with the \textbf{lift}, usually only the first decile, but there is a plot, also. The second one is consistency, with the \textbf{similarity distribution} plot. On the former, the holdout set is used to calculate the probabilities after the sorting of the OT - similar to the red balls analogy discussed on \ref{ch:evaluation}. The latter, plots the distribution of the scores assigned to the market and to the holdout set. As seen on the Introduction chapter of this work, Figure \ref{fig:simi-dist-expected-real} shows an example of this plot, where the orange are the holdout set and the blue curve is the market.
+These changes on the pipeline are to generate the metrics to evaluate the experiments in two ways. The first one, is the performance with the \textbf{lift}, usually only the first decile. The second one is consistency, with the \textbf{similarity distribution} plot. On the former, the holdout set is used to calculate the probabilities after the sorting of the OT - similar to the red balls analogy discussed on \ref{ch:evaluation}. The latter, plots the distribution of the scores assigned to the market and to the holdout set. As seen on the Introduction chapter of this work, Figure \ref{fig:simi-dist-expected-real} shows an example of this plot, where the orange are the holdout set and the blue curve is the market.
 
 \section{Cluster analysis}
 
@@ -45,9 +45,17 @@ In this seconds part of the chapter it will be explained how the clusters analys
 
 \subsection{Clustering strategy and pairing}
 
-The first thing to tackle was the definition of the clustering strategy and pairing. The strategy of how the cluster algorithm will be applied on the data and how the clusters from the portfolio will be paired with the clusters from the market. 
+% names for the cluster strategies
+\newcommand{\nameClusterStrategyA}{TrainOnPort}
+\newcommand{\nameClusterStrategyB}{TrainOnAll}
+% names for the cluster pairing
+\newcommand{\nameClusterPairingA}{PairWithItsCluster}
+\newcommand{\nameClusterPairingB}{PairWithAllMarket}
 
-Basically, for the strategy, there are two possible ones: \textit{training the cluster algorithm on the portfolio and applying it on the market} (\textbf{clustering strategy I}) or \textit{training and applying on all the data} (\textbf{stra-tegy II}). Let us take the example of the KMeans algorithm using these two strategies applied on a fake study dataset, which is illustrated on Figure \ref{fig:cluster-strategy}. Assuming that all sub plots are on the same scale, in (I) we see the portfolio clustered with its two centroids, on (II) we can see the KMeans "predicting"\footnote{this is a fairly common name for the inference step of an algorithm in scikit-learn implementation} the clusters of all data with the centroids learned on (I). This is the \textbf{clustering strategy I}. The \textbf{clustering strategy II} is represented on (III) where the KMeans trains and predicts on all data. We can see that the centroids are on different positions, as a result some companies are allocated on a different cluster relative to (II). 
+
+The first thing to tackle was the definition of the clustering strategy and pairing. The \underline{clustering strategy} dictates how the clustering algorithm will be applied on the data, and the \underline{cluster pairing}, determines how the clusters from the portfolio will be paired with the clusters from the market.
+
+There are two possible clustering strategies: \textit{training the cluster algorithm on the portfolio and applying it on the market} which will be called \textbf{\nameClusterStrategyA{}}, and \textit{training and applying on all the data} which will be called \textbf{\nameClusterStrategyB{}}. Let us take the example of the KMeans algorithm using these two strategies applied on a fake study dataset, which is illustrated on Figure \ref{fig:cluster-strategy}. Assuming that all sub plots are on the same scale, in (I) we see the portfolio clustered with its two centroids, on (II) we can see the KMeans "predicting"\footnote{this is a fairly common name for the inference step of an algorithm in scikit-learn implementation} the clusters of all data with the centroids learned on (I). This is the \nameClusterStrategyA{}. The \nameClusterStrategyB{} is represented on (III) where the KMeans trains and predicts on all data. We can see that the centroids are on different positions, as a result some companies are allocated on a different cluster relative to (II). 
 
 \begin{figure}[h]
    \centering
@@ -56,18 +64,18 @@ Basically, for the strategy, there are two possible ones: \textit{training the c
    \label{fig:cluster-strategy}
 \end{figure}
 
-For the pairing there are also two possible ways: \textit{each cluster on the portfolio will be matched with its cluster on the market} (\textbf{cluster pairing I}) or \textit{each cluster on the portfolio will run with the whole market} (\textbf{cluster pairing II}). For instance, if we have a study that have three clusters on the portfolio with 50 companies each, and 150 companies on each cluster on the market, in \textbf{cluster pairing I} the OT will run three times with a portfolio size of 50 and market size of 150; for \textbf{cluster pairing II} the OT will run three times with a portfolio size of 50 and a market size of 450 (whole market for each cluster). Figure \ref{fig:cluster-pairing} shows a block diagram of this scenario.
+For the pairing there are also two possible ways: \textit{each cluster on the portfolio will be matched with its cluster on the market} (let us call it \textbf{\nameClusterPairingA{}}), and \textit{each cluster on the portfolio will run with the whole market} (let us call it \textbf{\nameClusterPairingB{}}). For instance, if we have a study that have three clusters on the portfolio with 50 companies each, and 150 companies on each cluster on the market, in \nameClusterPairingA{} the OT will run three times with a portfolio size of 50 and market size of 150; for \nameClusterPairingB{} the OT will run three times with a portfolio size of 50 and a market size of 450 (whole market for each cluster). Figure \ref{fig:cluster-pairing} shows a block diagram of this scenario.
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=7cm]{fig/ch3-cluster-pairing.png}
-   \caption{Illustration of the cluster pairing. On the top is the cluster pairing (I) and on the bottom the cluster pairing (II). Source: Author}
+   \caption{Illustration of the cluster pairing. On the top is the \nameClusterPairingA{} and on the bottom the \nameClusterPairingB{}. Source: Author}
    \label{fig:cluster-pairing}
 \end{figure}
 
-Through a business view, it makes more sense to adopt the \textbf{clustering strategy I} since we are interested on the recommendations based on the user profile, in other words, the user's portfolio, regardless of the market data. 
+Through a business view, it makes more sense to adopt the \textbf{\nameClusterStrategyA{}} since we are interested on the recommendations based on the user profile, in other words, the user's portfolio, regardless of the market data. 
 
-On cluster pairing II the market is replicated for each cluster, leading each company to be scored N times (N being the number of clusters). Hence, there could be cases where one company has a high score in a cluster while, at the same time, have a low score in other one. To not deal with these cases the \textbf{cluster pairing I} was chosen for this work.
+On cluster pairing II the market is replicated for each cluster, leading each company to be scored N times (N being the number of clusters). Hence, there could be cases where one company has a high score in a cluster while, at the same time, have a low score in other one. To not deal with these cases the \textbf{\nameClusterPairingA{}} was chosen for this work.
 
 \subsection{Number of clusters}
 
@@ -95,7 +103,7 @@ Using the firmographics PCA plot, each study was assigned with a number of clust
 
 The last aspect of the cluster analysis was the choice of the algorithm. From the firmographics two principal components data, six clusters algorithms were applied on all the studies: \underline{KMeans}, \underline{Gaussian Mixture}, \underline{Bayesian Gaussian Mixture}, \underline{Agglomerative Clustering}, \underline{Spectral Clustering}, \underline{DBSCAN}\footnote{all of these implementations came from the scikit-learn python library \cite{scikit-learn}}. All of them were computed with default parameters and the same seed.
 
-The latter three did not run on some studies that have a market size in an order of magnitude of dozen of thousands companies, due to memory error\footnote{all the algorithms were running on a machine with 250 GB of RAM}. Because of their high memory complexity \cite{franti2006fast}, \cite{ester1996density}, \cite{yan2009fast}, they were discarded.
+The last three did not run on some studies that have a market size in an order of magnitude of dozen of thousands companies, due to memory error\footnote{all the algorithms were running on a machine with 250 GB of RAM}. Because of their high memory complexity \cite{franti2006fast}, \cite{ester1996density}, \cite{yan2009fast}, they were discarded.
 
 The studies were also clustered \underline{manually} in order to be used as a benchmark for the algorithms. "Manually" in a sense that the boundaries among the clusters were defined without an algorithm. Since, most of the PCA plots present a regression characteristic, these boundaries were lines equations. Figure \ref{fig:clustering-studies} shows the results for some of the studies using "Manual Clustering", KMeans, Gaussian Mixture (GMM) and Bayesian Gaussian Mixture (BayesianGM).
 
@@ -110,23 +118,28 @@ As we can see the algorithms did not get the shape of the data in some of the st
 
 \section{Experiments}
 
-In this last part of the chapter, it will be discussed about the experiments that were developed to test the clustering in the OT. After the analysis of the clusters, it was formulated two experiments: \textbf{One run for each cluster} (Experiment I) and \textbf{Clusters as features} (Experiment II).
+% names for the experiments
+\newcommand{\nameExperimentI}{OneRunEachCluster}
+\newcommand{\nameExperimentII}{ClusterAsFeatures}
+
+
+In this last part of the chapter, it will be discussed about the experiments that were developed to test the clustering in the OT. After the analysis of the clusters, it was formulated two experiments: \textbf{\nameExperimentI{}} and \textbf{\nameExperimentII{}}.
 
 \subsection{One run for each cluster}
 \label{ch:experiment-i}
 
-The Experiment I consists in using the clustering strategy I and cluster pairing I. A cluster in a portfolio will be matched with its pair on the market, and each cluster, on a study, will generated a run of the OT. After the runs, all of the outputs will be joined into a single one. So, for the user, the interface still the same. But, internally, OT will split the study in N\footnote{N is the number of clusters} smaller studies and then will aggregate the outputs. These modifications can be better understood when looking to the diagram on Figure \ref{fig:one-run-each-cluster}. 
+The experiment \nameExperimentI{} consists on using the clustering strategy \nameClusterStrategyA{} and cluster pairing \nameClusterPairingA{}. A cluster in a portfolio will be matched with its pair on the market, and each cluster, on a study, will generated a run of the OT. After the runs, all of the outputs will be joined into a single one. So, for the user, the interface still the same. But, internally, OT will split the study in N\footnote{N is the number of clusters} smaller studies and then will aggregate the outputs. These modifications can be better understood when looking to the diagram on Figure \ref{fig:one-run-each-cluster}. 
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=\linewidth]{fig/ch3-one-run-each-cluster.png}
-   \caption{Modifications on the OT for the Experiment I. Source: Author}
+   \caption{Modifications on the OT for the experiment \nameExperimentI{}. Source: Author}
    \label{fig:one-run-each-cluster}
 \end{figure}
 
-To clarify more this idea of the Experiment I, let us take the example of Figure \ref{fig:cluster-strategy}. Since there are two clusters, OT will match the dark blue cluster on the portfolio with its pair on the market, generating one run. Another run will be generated by using the same analogy for the light blue cluster. Then the OT will aggregated both outputs and return as only one sorted market.
+To clarify more this idea of the Experiment \nameExperimentI{}, let us take the example of Figure \ref{fig:cluster-strategy}. Since there are two clusters, OT will match the dark blue cluster on the portfolio with its pair on the market, generating one run. Another run will be generated by using the same analogy for the light blue cluster. Then the OT will aggregated both outputs and return as only one sorted market.
 
-Another important modification made on the OT pipeline due to the Experiment I was the definition of a \textbf{minimum size to a study}. There could be cases where, in a portfolio, a cluster has a small number of companies that is not enough for the RS algorithm to create the score. A cluster (sub-run on the OT) must have at minimum:
+Another important modification made on the OT pipeline due to the \nameExperimentI{} was the definition of a \textbf{minimum size to a study}. There could be cases where, in a portfolio, a cluster has a small number of companies that is not enough for the RS algorithm to create the score. A cluster (sub-run on the OT) must have at minimum:
 \begin{itemize}
     \item \textbf{5} companies in the \textbf{portfolio};
     \item \textbf{2} companies in the \textbf{holdout sample}\footnote{in the Experiment I, the holdout set was sampled after the clustering}; and
@@ -136,11 +149,11 @@ If one of these is not satisfied, the data is discarded. For example, a study wi
 
 \subsection{Clusters as features}
 
-The second experiment consists in using the information of the clusters as an extra column in the features table used by the OT. It will not use any of the cluster pairing strategies (it uses the clustering strategy I, though). The Experiment II is much more simple than Experiment I, there is no split on the study, it is not necessary an aggregation of the output, and it is not needed to define a minimum number to a study to run. The information of the clusters is joined with the features table that feed the RS algorithm. Figure \ref{fig:clusters-as-features} shows its simple modification.
+The second experiment consists in using the information of the clusters as an extra column in the features table used by the OT. It will not use any of the cluster pairing strategies (it uses the clustering strategy I, though). The experiment \nameExperimentII{} is much more simple than \nameExperimentI{}: there is no split on the study; it is not necessary an aggregation of the output; and it is not needed to define a minimum number to a study to run. The information of the clusters is joined with the features table that feed the RS algorithm. Figure \ref{fig:clusters-as-features} shows its simple modification.
 
 \begin{figure}[H]
    \centering
    \includegraphics[width=\linewidth]{fig/ch3-clusters-as-features.png}
-   \caption{Modifications on the OT for the Experiment II. Source: Author}
+   \caption{Modifications on the OT for the experiment \nameExperimentII{}. Source: Author}
    \label{fig:clusters-as-features}
 \end{figure}
