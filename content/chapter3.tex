@@ -91,6 +91,7 @@ Using the firmographics PCA plot, each study was assigned with a number of clust
 \end{figure}
 
 \subsection{Cluster algorithm}
+\label{ch:cluster-algorithm}
 
 The last aspect of the cluster analysis was the choice of the algorithm. From the firmographics two principal components data, six clusters algorithms were applied on all the studies: \underline{KMeans}, \underline{Gaussian Mixture}, \underline{Bayesian Gaussian Mixture}, \underline{Agglomerative Clustering}, \underline{Spectral Clustering}, \underline{DBSCAN}\footnote{all of these implementations came from the scikit-learn python library \cite{scikit-learn}}. All of them were computed with default parameters and the same seed.
 
@@ -112,6 +113,7 @@ As we can see the algorithms did not get the shape of the data in some of the st
 In this last part of the chapter, it will be discussed about the experiments that were developed to test the clustering in the OT. After the analysis of the clusters, it was formulated two experiments: \textbf{One run for each cluster} (Experiment I) and \textbf{Clusters as features} (Experiment II).
 
 \subsection{One run for each cluster}
+\label{ch:experiment-i}
 
 The Experiment I consists in using the clustering strategy I and cluster pairing I. A cluster in a portfolio will be matched with its pair on the market, and each cluster, on a study, will generated a run of the OT. After the runs, all of the outputs will be joined into a single one. So, for the user, the interface still the same. But, internally, OT will split the study in N\footnote{N is the number of clusters} smaller studies and then will aggregate the outputs. These modifications can be better understood when looking to the diagram on Figure \ref{fig:one-run-each-cluster}. 
 

@@ -1,11 +1,69 @@
 \chapter{Results}
 
-\section{Experiments}
+In this chapter will be presented the results of the experiments I and I, along side with a discussion of the impact on the lift and similarity distributions of these experiments relative to the OT without the clustering.
 
-\subsection{Clustering: Common algorithms}
+\section{Experiment I}
 
-\subsection{Clustering: Manually}
+As seen on \ref{ch:experiment-i} this experiment was the one that creates sub-runs of the OT for each cluster in the portfolio. Also, it had to be created some heuristics to deal with clusters that did not have enough data to run. Using the "manually clustering", as discussed on \ref{ch:cluster-algorithm} the summary of the lift gain (how much the lift on the first decile increased or decreased relative to the OT without clustering) is presented on Table \ref{table:lift_gain_exp-i} and the similarity distributions plots of some studies are presented on Figure \ref{fig:simi-plots-exp-i}.
 
-\subsection{One run by Clusters}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Study} & \textbf{Lift Gain (\%)}        & \textbf{Study} & \textbf{Lift Gain (\%)}        \\ \hline
+1              & \cellcolor[HTML]{ff514d}-12,09 & 15             & \cellcolor[HTML]{ff514d}-13,26 \\ \hline
+2              & \cellcolor[HTML]{8ed08e}16,67  & \textbf{16}    & \cellcolor[HTML]{ff514d}-20,00 \\ \hline
+3              & \cellcolor[HTML]{8ed08e}0,89   & \textbf{17}    & \cellcolor[HTML]{ffccc9}-4,28  \\ \hline
+4              & 0,00                           & 18             & \cellcolor[HTML]{ff514d}-13,06 \\ \hline
+5              & \cellcolor[HTML]{ffccc9}-0,14  & 19             & \cellcolor[HTML]{ff514d}-15,42 \\ \hline
+6              & \cellcolor[HTML]{ff514d}-17,28 & 20             & \cellcolor[HTML]{8ed08e}0,57   \\ \hline
+7              & \cellcolor[HTML]{ff514d}-12,44 & 21             & \cellcolor[HTML]{ffce93}-33,95 \\ \hline
+\textbf{8}     & \cellcolor[HTML]{ffccc9}-5,17  & 22             & 0,00                           \\ \hline
+\textbf{9}     & \cellcolor[HTML]{ffce93}-27,78 & 23             & \cellcolor[HTML]{ffce93}-28,16 \\ \hline
+\textbf{10}    & \cellcolor[HTML]{8ed08e}6,25   & 24             & \cellcolor[HTML]{ffce93}200,01 \\ \hline
+11             & \cellcolor[HTML]{ff514d}-17,75 & \textbf{25}    & \cellcolor[HTML]{ff514d}-12,77 \\ \hline
+12             & \cellcolor[HTML]{ffccc9}-1,01  & 26             & \cellcolor[HTML]{ffce93}-29,35 \\ \hline
+13             & \cellcolor[HTML]{ff514d}-6,93  & 27             & \cellcolor[HTML]{ffccc9}-0,08  \\ \hline
+14             & \cellcolor[HTML]{ffccc9}-1,16  &                &                                \\ \hline
+\end{tabular}
+\caption{Summary of the first-decile lift gains for Experiment I}
+\label{table:lift_gain_exp-i}
+\end{table}
 
-\subsection{Cluster as features}
+The cells are colored to better understand the gains. The green ones represent a positive gain, the light red ones represent a sightly negative gain, the dark red ones represent a considerable negative gain, the orange ones are the outliers, and the white represent that the lift did not change. Also, there are some studies that are bolded, they represent the studies that brought up the hypothesis of this work, as discussed on the Introduction, they had two or more high density areas on the similarity distribution plot, meaning that, they can have more than one profile on their portfolio
+
+We can see that 
+
+
+
+
+
+\section{Experiment II}
+
+bla bla bla experiment II
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Study} & \textbf{Lift Gain (\%)}        & \textbf{Study} & \textbf{Lift Gain (\%)}        \\ \hline
+1              & \cellcolor[HTML]{8ed08e}4,40   & 15             & \cellcolor[HTML]{8ed08e}0,46   \\ \hline
+2              & \cellcolor[HTML]{ff514d}-8,33  & \textbf{16}    & \cellcolor[HTML]{ff514d}-6,58  \\ \hline
+3              & \cellcolor[HTML]{8ed08e}23,65  & \textbf{17}    & \cellcolor[HTML]{ffce93}-46,08 \\ \hline
+4              & 0,00                           & 18             & \cellcolor[HTML]{ffccc9}-1,87  \\ \hline
+5              & \cellcolor[HTML]{8ed08e}1,49   & 19             & \cellcolor[HTML]{8ed08e}3,58   \\ \hline
+6              & \cellcolor[HTML]{ffce93}-28,33 & 20             & \cellcolor[HTML]{ff514d}-11,28 \\ \hline
+7              & \cellcolor[HTML]{8ed08e}12,50  & 21             & \cellcolor[HTML]{ffccc9}-2,64  \\ \hline
+\textbf{8}     & \cellcolor[HTML]{8ed08e}16,84  & 22             & \cellcolor[HTML]{8ed08e}1,23   \\ \hline
+\textbf{9}     & \cellcolor[HTML]{8ed08e}12,80  & 23             & \cellcolor[HTML]{ffccc9}-0,14  \\ \hline
+\textbf{10}    & \cellcolor[HTML]{8ed08e}18,59  & 24             & \cellcolor[HTML]{ffce93}300,02 \\ \hline
+11             & \cellcolor[HTML]{ff514d}-7,84  & \textbf{25}    & \cellcolor[HTML]{8ed08e}4,90   \\ \hline
+12             & \cellcolor[HTML]{ffccc9}-0,15  & 26             & \cellcolor[HTML]{ffccc9}-0,77  \\ \hline
+13             & \cellcolor[HTML]{8ed08e}0,68   & 27             & \cellcolor[HTML]{8ed08e}1,21   \\ \hline
+14             & \cellcolor[HTML]{8ed08e}7,30   &                &                                \\ \hline
+\end{tabular}
+\caption{Summary of the first-decile lift gains for Experiment II}
+\label{table:lift_gain_exp-ii}
+\end{table}
+
+\section{Experiment II - other cluster algorithms}
