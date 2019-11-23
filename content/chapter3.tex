@@ -142,7 +142,7 @@ To clarify more this idea of the Experiment \nameExperimentI{}, let us take the 
 Another important modification made on the OT pipeline due to the \nameExperimentI{} was the definition of a \textbf{minimum size to a study}. There could be cases where, in a portfolio, a cluster has a small number of companies that is not enough for the RS algorithm to create the score. A cluster (sub-run on the OT) must have at minimum:
 \begin{itemize}
     \item \textbf{5} companies in the \textbf{portfolio};
-    \item \textbf{2} companies in the \textbf{holdout sample}\footnote{in the Experiment I, the holdout set was sampled after the clustering}; and
+    \item \textbf{2} companies in the \textbf{holdout sample}\footnote{in the experiment \nameExperimentI{}, the holdout set was sampled after the clustering}; and
     \item \textbf{10} companies in the \textbf{market};
 \end{itemize}
 If one of these is not satisfied, the data is discarded. For example, a study with a portfolio size of 40 and market of 40000, with 3 clusters and the following number of companies in the portfolio/holdout/market: \textbf{Cluster I: 3/1/4000}, \textbf{Cluster II: 20/4/30000}, \textbf{Cluster III: 9/3/6000}. The Cluster I run would be discarded, losing 10\% of the overall study market. Still, there are 36000 companies to search for leads, so it is not a significant loss. Moreover, creating a strategy to allocate these sub-studies' companies that are discarded in other clusters would be cumbersome and it would not be worth it since it is a small percentage of the overall study. Therefore, the discard approach was chosen due to its simplicity.

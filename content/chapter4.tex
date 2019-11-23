@@ -86,17 +86,43 @@ The Figure \ref{fig:lift-hist-plot-exp-ii} shows a histogram of the lift gain fo
 
 \section{Similarity distributions}
 
-% TODO improve
-Now looking at some of the similarity distributions plots for both experiments. Each topic will look into some "groups" of the lift gain
+Now let us look at some of the similarity distributions plots for both experiments. These plots will have three curves:
+% TODO check the colors of this dist plots i think the port and market is switched
+the market similarity in green, the holdout set in orange, and the portfolio in blue. Each topic of this section will address a group represented by the colors in the lift gain summary tables. 
 
 \subsection{No change on the lift}
 
-We see that both experiments present studies that do not have any change on the lift. Study ...(26) appear on both and study .. only on the \nameExperimentI{}. Figure ... show simi plosts for study 26
-we see that infact the similarity is the same as withou clustering .... on study ... we see figure that show each clusters simi plot and the aggregated ones .... it had only one valid sub-study and it had most of the data so ... is the same.
+In both experiments there were studies that do not had any variation on the lift. \underline{Study 4} appeared on both. Figure \ref{fig:study-4-comparsion} shows the similarity distribution plots for Study 6. The first row is the run of the OT without the clustering, and the second row is with the clustering. On the left is presented the \nameExperimentI{} experiment and on the right \nameExperimentII{}. There is, also, on the information about the size of the sets in the study. This is a study with around 4600 companies on the portfolio (1100 are the Holdout set) and a market around 220 thousand companies, meaning that the portfolio correspond to approximately 1.5\% of the companies on the study.
+% TODO Can I show the port size, holdout size and market size?
 
-\subsection{outliers}
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=\linewidth]{fig/ch4-study-4-comparsion.jpg}
+   \caption{Similarity distribution plot for Study 4 for both experiments. Source: Author}
+   \label{fig:study-4-comparsion}
+\end{figure}
 
-study ... had an huge improve on the lift , and it appear in both experiments. figure show its simi dist. 
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=\linewidth]{fig/ch4-study-4-pca-plot.png}
+   \caption{PCA plot for Study 4. The red line is the same on the three plots. Source: Author}
+   \label{fig:study-4-pca-plot}
+\end{figure}
+
+We can see that on \nameExperimentI{} the similarity distributions with and without clustering are virtually the same. This is better understood when you look at the number of clusters in its portfolio. Figure \ref{fig:study-4-pca-plot} shows its PCA plot. There is only a single cluster on the portfolio, consequentially, the result of this cluster is the same of the aggregated output and, at the same time, the result without clustering.
+
+On \nameExperimentII{}, however, there is a difference on the distributions between the with and without the clustering. Basically, the holdout set changed its distribution. In this experiment the OT scored this companies with really close scores, in other words, their standard deviation decreased. But, even though the scores of the companies (and possibly the ordering) of the holdout set changed, the lift kept the same because of the way to calculate this metric. The same number of companies (of the holdout set) on the first decile occurred in the run without the clustering and in with the clustering, thus the value of the lift is the same for both runs.
+
+Another study that had a zero lift gain was \underline{Study 22}, in the \nameExperimentI{} experiment. Figure \ref{fig:study-22-clusters-simi-plot} shows the similarity distribution plots for the clusters' runs of this study.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=\linewidth]{fig/ch4-study-22-clusters-simi-plot.png}
+   \caption{Similarity distribution plot for the clusters' runs of Study 22 on experiment \nameExperimentI{}. Source: Author}
+   \label{fig:study-22-clusters-simi-plot}
+\end{figure}
+
+Although this study has 3 clusters on the portfolio, only Cluster 1 has the minimum data to a valid run. Cluster 0 and Cluster 2 do not have companies on the Market, so the 16 companies of the former and 13 companies of latter are discarded. Since they represent less than 0.001 \% of the overall data of the study, the behavior is practically the same as Study 4, thus, for the same reason, the lift is the same for both runs (with and without clustering).
 
 \subsection{marginal increase and decrease on the lift}
 
@@ -105,6 +131,12 @@ we see that on figure ... and figure .... for both experiments the simi distribu
 \subsection{considerable  increase and decrease on the lift}
 
 we can see the holdout set skew to left and right on increase and deacrease.... figure .. shows it
+
+\subsection{outliers}
+
+study ... had an huge improve on the lift , and it appear in both experiments. figure show its simi dist. 
+
+
 
 \subsection{studies that had multiple profiles}
 
