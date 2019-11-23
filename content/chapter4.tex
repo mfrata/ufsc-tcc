@@ -4,7 +4,11 @@ In this chapter will be presented the results of the experiments \nameExperiment
 
 \section{Experiment \nameExperimentI}
 
-As seen on \ref{ch:experiment-i} this experiment was the one that creates sub-runs of the OT for each cluster in the portfolio. Also, it had to be created some heuristics to deal with clusters that did not have enough data to run. Using the "manually clustering", as discussed on \ref{ch:cluster-algorithm} the summary of the lift gain (how much the lift on the first decile increased or decreased relative to the OT without clustering) is presented on Table \ref{table:lift_gain_exp-i} and the similarity distributions plots of some studies are presented on Figure \ref{fig:simi-plots-exp-i}.
+As seen on \ref{ch:experiment-i} this experiment was the one that creates sub-runs of the OT for each cluster in the portfolio. Also, it had to be created some heuristics to deal with clusters that did not have enough data to run. Using the "manually clustering", as discussed on \ref{ch:cluster-algorithm} the summary of the lift gain (how much the lift on the first decile increased or decreased relative to the OT without clustering) is presented on Table \ref{table:lift_gain_exp-i}. 
+
+The cells are colored to better understand the gains. The green ones represent a positive gain, the light red ones represent a sightly negative gain, the dark red ones represent a considerable negative gain, the white represent that the lift did not change, and finally the orange ones are the outliers which were defined using the interquartile range rule \cite{upton1996understanding}. 
+
+There are, also, some studies that are bolded. They represent the studies that brought up the hypothesis of this work, as discussed on the Introduction, they had two or more high density areas on the similarity distribution plot, meaning that, they can have more than one profile on their portfolio.
 
 \begin{table}[h]
 \centering
@@ -17,12 +21,12 @@ As seen on \ref{ch:experiment-i} this experiment was the one that creates sub-ru
 4              & 0,00                           & 18             & \cellcolor[HTML]{ff514d}-13,06 \\ \hline
 5              & \cellcolor[HTML]{ffccc9}-0,14  & 19             & \cellcolor[HTML]{ff514d}-15,42 \\ \hline
 6              & \cellcolor[HTML]{ff514d}-17,28 & 20             & \cellcolor[HTML]{8ed08e}0,57   \\ \hline
-7              & \cellcolor[HTML]{ff514d}-12,44 & 21             & \cellcolor[HTML]{ffce93}-33,95 \\ \hline
+7              & \cellcolor[HTML]{ff514d}-12,44 & 21             & \cellcolor[HTML]{ff514d}-33,95 \\ \hline
 \textbf{8}     & \cellcolor[HTML]{ffccc9}-5,17  & 22             & 0,00                           \\ \hline
-\textbf{9}     & \cellcolor[HTML]{ffce93}-27,78 & 23             & \cellcolor[HTML]{ffce93}-28,16 \\ \hline
+\textbf{9}     & \cellcolor[HTML]{ff514d}-27,78 & 23             & \cellcolor[HTML]{ff514d}-28,16 \\ \hline
 \textbf{10}    & \cellcolor[HTML]{8ed08e}6,25   & 24             & \cellcolor[HTML]{ffce93}200,01 \\ \hline
 11             & \cellcolor[HTML]{ff514d}-17,75 & \textbf{25}    & \cellcolor[HTML]{ff514d}-12,77 \\ \hline
-12             & \cellcolor[HTML]{ffccc9}-1,01  & 26             & \cellcolor[HTML]{ffce93}-29,35 \\ \hline
+12             & \cellcolor[HTML]{ffccc9}-1,01  & 26             & \cellcolor[HTML]{ff514d}-29,35 \\ \hline
 13             & \cellcolor[HTML]{ff514d}-6,93  & 27             & \cellcolor[HTML]{ffccc9}-0,08  \\ \hline
 14             & \cellcolor[HTML]{ffccc9}-1,16  &                &                                \\ \hline
 \end{tabular}
@@ -30,17 +34,20 @@ As seen on \ref{ch:experiment-i} this experiment was the one that creates sub-ru
 \label{table:lift_gain_exp-i}
 \end{table}
 
-The cells are colored to better understand the gains. The green ones represent a positive gain, the light red ones represent a sightly negative gain, the dark red ones represent a considerable negative gain, the orange ones are the outliers, and the white represent that the lift did not change. Also, there are some studies that are bolded, they represent the studies that brought up the hypothesis of this work, as discussed on the Introduction, they had two or more high density areas on the similarity distribution plot, meaning that, they can have more than one profile on their portfolio
+We can see that only 5 studies had positive impact on the lift, and one of them is an outlier. The majority of the studies had a negative impact - 6 of them were sightly negative and 14 worsened the lift considerably. It is important to notice that two studies did not present any changes on the lift with the clustering.
 
-We can see that 
+The Figure \ref{fig:lift-hist-plot-exp-i} shows a histogram of the lift gain for the studies excluding the outliers. We can see that the mean lift gain for \nameExperimentI{} is \textbf{-9.871 \%}.
 
-
-
-
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=\linewidth]{fig/ch4-lift-hist-plot-exp-i.png}
+   \caption{Histogram plot of the studies' lift gain for experiment \nameExperimentI{}. Source: Author}
+   \label{fig:lift-hist-plot-exp-i}
+\end{figure}
 
 \section{Experiment \nameExperimentII{}}
 
-bla bla bla experiment II
+Now for the second experiment, which was the simple use of the clustering information as another feature. Using the same color scheme as Table \ref{table:lift_gain_exp-i}, Table \label{table:lift_gain_exp-ii} shows the summary of the lift gains for the experiment \nameExperimentII{}.
 
 \begin{table}[h]
 \centering
@@ -49,7 +56,7 @@ bla bla bla experiment II
 \textbf{Study} & \textbf{Lift Gain (\%)}        & \textbf{Study} & \textbf{Lift Gain (\%)}        \\ \hline
 1              & \cellcolor[HTML]{8ed08e}4,40   & 15             & \cellcolor[HTML]{8ed08e}0,46   \\ \hline
 2              & \cellcolor[HTML]{ff514d}-8,33  & \textbf{16}    & \cellcolor[HTML]{ff514d}-6,58  \\ \hline
-3              & \cellcolor[HTML]{8ed08e}23,65  & \textbf{17}    & \cellcolor[HTML]{ffce93}-46,08 \\ \hline
+3              & \cellcolor[HTML]{ffce93}23,65  & \textbf{17}    & \cellcolor[HTML]{ffce93}-46,08 \\ \hline
 4              & 0,00                           & 18             & \cellcolor[HTML]{ffccc9}-1,87  \\ \hline
 5              & \cellcolor[HTML]{8ed08e}1,49   & 19             & \cellcolor[HTML]{8ed08e}3,58   \\ \hline
 6              & \cellcolor[HTML]{ffce93}-28,33 & 20             & \cellcolor[HTML]{ff514d}-11,28 \\ \hline
@@ -66,4 +73,51 @@ bla bla bla experiment II
 \label{table:lift_gain_exp-ii}
 \end{table}
 
-\section{Experiment \nameExperimentI with other clustering algorithms}
+We can see that, differently from \nameExperimentI{}, the majority of the studies had positive gain (16 studies, to be exactly), two of them are outliers. Only 4 studies were considerably worse on the lift gain and 5 sightly worse, a total of 9 studies. Only one study did not presented any change on the lift and, this time, 4 were outliers (2 positives and 2 negatives).
+
+The Figure \ref{fig:lift-hist-plot-exp-ii} shows a histogram of the lift gain for the studies excluding the outliers. We see that the mean lift gain for \nameExperimentII{} is \textbf{2.016 \%}.
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[width=\linewidth]{fig/ch4-lift-hist-plot-exp-ii.png}
+   \caption{Histogram plot of the studies' lift gain for experiment \nameExperimentII{}. Source: Author}
+   \label{fig:lift-hist-plot-exp-ii}
+\end{figure}
+
+\section{Similarity distributions}
+
+% TODO improve
+Now looking at some of the similarity distributions plots for both experiments. Each topic will look into some "groups" of the lift gain
+
+\subsection{No change on the lift}
+
+We see that both experiments present studies that do not have any change on the lift. Study ...(26) appear on both and study .. only on the \nameExperimentI{}. Figure ... show simi plosts for study 26
+we see that infact the similarity is the same as withou clustering .... on study ... we see figure that show each clusters simi plot and the aggregated ones .... it had only one valid sub-study and it had most of the data so ... is the same.
+
+\subsection{outliers}
+
+study ... had an huge improve on the lift , and it appear in both experiments. figure show its simi dist. 
+
+\subsection{marginal increase and decrease on the lift}
+
+we see that on figure ... and figure .... for both experiments the simi distribuion was almost the same as without clustering
+
+\subsection{considerable  increase and decrease on the lift}
+
+we can see the holdout set skew to left and right on increase and deacrease.... figure .. shows it
+
+\subsection{studies that had multiple profiles}
+
+no obvious pattern, actually no pattern at all
+
+\section{Experiment \nameExperimentII{} with other clustering algorithms}
+
+Seing the performance of the bad performance of experiment I it was decided to not continue the work with it, then it was decided to test exp 2 with the other clusrint algoriths showd in figure ...
+
+figure ... shows the histogram of the lift gains for the three algorithsm
+
+
+
+
+
+
