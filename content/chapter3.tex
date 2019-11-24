@@ -87,14 +87,14 @@ Before applying the PCA, a preprocessing step was needed. Categorical features w
 
 Figure \ref{fig:pca-plot} shows the results of the PCA plot for some studies using all features that OT uses on production environment (top), and PCA plot using only firmographics features for the sames studies (bottom). Each study is a column, where the first row is the plot of the PCA for the portfolio data, the second row the PCA plot for the market data, and the third row is for both, using different colors to distinguish portfolio from market (blue is the market and orange the portfolio).
 
-We can see that it is much more difficult to visualise the clusters on the all-features PCA plot. There are some examples where you see a clear boundary on the data, but if wee look to the firmographics plot these boundaries are much more defined. Moreover, if you take to account the business perspective, it makes sense to group the companies by their firmographics. For example, a study with one clusters with big companies from the state of São Paulo and the other one with small companies from the state of Santa Catarina.
+We can see that it is much more difficult to visualise the clusters on the all-features PCA plot. There are some examples where you see a clear boundary on the data, but if wee look to the firmographics plot these boundaries are much more defined. Moreover, if you take to account the business perspective, it makes sense to group the companies by their firmographics. For example, a study with one clusters with big companies from the state of São Paulo or other one with small companies from the state of Santa Catarina.
 
 Using the firmographics PCA plot, each study was assigned with a number of clusters manually. For instance, on Figure \ref{fig:pca-plot}, from left to right, the number of clusters in the portfolio assigned are, respectively: 3, 3, 3, 2, 4, 3, 2, 2.  
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=\linewidth]{fig/ch3-pca-plot.png}
-   \caption{PCA plot for the studies. On the top there is the the one using all features and on the bottom, only using firmographics features. Source: Author}
+   \caption{PCA plot for the studies. In the top there are the plots using all features and In the bottom, only using firmographics features. For each plot (a column) the first cell is only for the portfolio, the second cell, only for the market, and in the third cell for both. Source: Author}
    \label{fig:pca-plot}
 \end{figure}
 
