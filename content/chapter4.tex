@@ -143,6 +143,7 @@ All of these studies had the same prevalent behavior: the overall distributions 
 We can notice that the peak near similarity 1 of the holdout set goes from approximately 37 to beyond 40 in Figure \ref{fig:study-5-marginal-increase-exp-2}. The opposite happens in Figure \ref{fig:study-12-marginal-decrease-exp-1}, the peak goes from almost 25 to 20.
 
 \subsection{Studies with considerable increase or decrease on the lift}
+\label{ch:considerable-change}
 
 Most of the studies on both experiment had more than 5\% variation on the lift (positive and negative). In \nameExperimentI{}, 14 of them were negative (\underline{Studies: 1, 6, 7, 9, 11, 13, 15, 16, 18, 19, 21, 23, 25, 26}), and only \underline{Study 2} was positive. However, in experiment \nameExperimentII{}, 5 were positive (\underline{Studies: 7, 8, 9, 10, 14}) and 4 were negative (\underline{Studies: 2, 11, 16, 20}).
 
@@ -163,7 +164,7 @@ Now the difference between the distributions, in these cases, is easier to spot.
 
 \subsection{Outliers studies}
 
-study ... had an huge improve on the lift , and it appear in both experiments. figure show its simi dist.
+\underline{Study 24} was clearly the outlier of all studies, it got more than 200\% increase on the lift in both Experiments. In experiment \nameExperimentII{} more three studies were considered outliers due to the interquartile range rule - the lower and upper bound in this experiment were -14.77 \% and 18.62 \%, respectively. These studies had similar shift on the distributions as seen in \ref{ch:considerable-change}. Hence just Study 24 similarity plot needs to be further delve into it. Figure \ref{fig:outlier-study-24-exp-2} exhibit the similarity distriution plot of this study in \nameExperimentII{}, and Figure \ref{fig:outlier-study-24-lift-exp-2} its lift plots, which contains the lifts of all deciles of the runs with and without the clustering.
 
 \begin{figure}[h]
    \centering
@@ -176,7 +177,13 @@ study ... had an huge improve on the lift , and it appear in both experiments. f
    \label{fig:outlier-study-24-lift-exp-2}
 \end{figure}
 
+The main aspect of this study is presented in Figure \ref{fig:outlier-study-24-exp-2}. There is the bizarre shape of the three distributions of the run without the clustering. All the data is bundled in three peaks with the highest one located at similarity 0.8. The OT could not even classify the portfolio of this study close to similarity 1.0. Moreover, the number of companies for each of the sets of the study is unbalanced. There are only 35 companies in the portfolio and 12 in the holdout set against a market with two orders of magnitude higher. This discrepancy can be one of the issues that led this study have odd similarity distributions.
 
+This issue is reinforced when we look at Figure \ref{fig:outlier-study-24-lift-exp-2}. The expected shape of a lift curve is in the form of a decreasing exponential, in other words, the lift of the decile on the left is greater than the one in the right, but this is not what happens on both runs of the experiment for this study. In the run with the clustering the lift of the second decile is lower than the fourth one. On top of that, the lift of the first decile in the run without the clustering is lower than 1.0. This, in practice, means that the sorting of the OT is worse than the random chance. So, in this case, the OT would be hindering the user.
+
+With the clustering, the distributions skewed to right, with the holdout set being the closest to similarity 1.0. This explains why the lift of the first decile skyrocketed over 200\% in the run with the clustering.
+
+Although the gap of the portfolio size and market size can be possible cause for this behavior, the real reason still unknown due to time constraints of this work. Other factors as: the features' data and how the user created this run (the filters applied) must be further investigate to completely solve this issue. For now, this study will be considered an outlier.
 
 \subsection{Studies that had multiple profiles in its portfolio}
 
