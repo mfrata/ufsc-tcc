@@ -9,7 +9,7 @@ Neoway Business Solution is a big data analytics company with a variety of produ
 
 \begin{figure}[h]
    \centering
-   \includegraphics[width=9cm]{fig/int-brazil-comps-venn-diagram.jpg}
+   \includegraphics[width=9cm]{fig/ch1-brazil-comps-venn-diagram.jpg}
    \caption{Venn Diagram explaining the sets involved in the On Target product. Source: Author.}
    \label{fig:braz-comps-venn-diagram}
 \end{figure}
@@ -18,18 +18,19 @@ Recently, OT was updated, and a benchmark was created to compare between differe
 % OBS: "high density probabilities areas" = "bump"
 (I) is the best case scenario of a study, where all the portfolio's samples are close to similarity 1; The market has two high density probabilities areas: one close to similarity 0 and other close to similarity one, in others words, some companies have no fit with the portfolio and others are alike the portfolio. The latter is the high quality leads to recommend to the user. (II) is an example of a study with unexpected behavior. The portfolio's sample distribution has two high densities probabilities locations along the x-axis leading the algorithm to not generate high quality leads (market companies with similarity close to 1).
 
-One hypothesis of the OnTarget team is that in this study (and others alike) the client has a heterogeneous portfolio, meaning that it can have two or more distinct profiles in it. The algorithm tries to optimize for the mean profile of the whole portfolio but, maybe, this may not the optimal solution.
+One hypothesis of the OnTarget team is that in this study (and others alike) the client has a heterogeneous portfolio, \textbf{meaning that it can have two or more distinct profiles in it}. The algorithm tries to optimize for the mean profile of the whole portfolio but, this may not the optimal solution.
 
 \begin{figure}
    \centering
-   \includegraphics[width=10cm]{fig/int-simi-dist-expected-real.png} 
+   \includegraphics[width=10cm]{fig/ch1-simi-dist-expected-real.png} 
    \caption{Similarity distribution from the benchmark.(I) shows a best case scenario one and (II) a strange-behavior scenario. Source: Author.}
    \label{fig:simi-dist-expected-real}
 \end{figure}
 
 This work is one of the several improvements in the On Target product road map. The objective is to analyze whether the overall performance of the high quality leads generation improves by clustering the portfolio before running the recommendation algorithm. 
 
-In order to preserve interpretability, the clustering procedure will not include all available features . Only firmographics variables will be used\cite{wikipedia_firmographics} variables which are related to characteristics of a business, such as: company size, location, number of employees and others. 
+In order to preserve interpretability, the clustering procedure will not include all available features . Only firmographics variables will be used\cite{wikipedia_firmographics} variables which are related to characteristics of a business, such as: company size, location, number of employees and others.
+
 
 \section{Objectives}
 
@@ -52,8 +53,12 @@ Specific objectives of this work are:
 
 \section{Work outline}
 
-% TODO after done with writing...
-in the chapter 2 it will have this
+This thesis is organized in the following manner: 
 
-in the chapter 3 it will have that
+In the chapter 2 some theoretical concepts are explained ,so the reader can understand the what theory is behind this work. 
+
+Next, in the chapter 3, is introduced the terms used by the OT's team and a basic view of how it works, later in the chapter, a discussion about the clustering procedures and the conceived experiments.
+
+In chapter 4, is presented the results of these experiments alongside a extensive analysis in the metrics of several scenarios. 
  
+Finally, on chapter 5, a recap of this work is presented to the reader, with the takeouts and future work. 
