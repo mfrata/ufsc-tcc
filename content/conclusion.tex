@@ -1,45 +1,31 @@
-\chapter{Conclusion} \label{cha:conclusion}
+\chapter{Conclusion} 
+\label{cha:conclusion}
 
+The idea of this work emerged after the creation of a benchmark due to an update in the On Target, which is a recommender system at Neoway that its main purpose is to generate high quality leads for the customers of the company. With the benchmark the team noticed that some studies had multiple high densities areas in the holdout set distributions leading to the hypothesis of multiple profiles in the portfolios. Based on this scenario we proposed a proof of concept on clustering the data from a study using firmographics variables in order to improve the performance of the On Target.
 
-points for conclusion
+We started this thesis by discussing the context of recommender systems and their relevance for business today. Following, a introduction of the concept of clustering and principal component analysis, both terms that were applied in the procedures to come.
 
-the manual clustering had the best perfomance of the clustering algorithms
-    meaning that the PCA plot clusters identified visually make sense
-    
-In contrast to academic approach, this work had several practical approaches like clustering the data manually. .... it would take tooo much time to come with a solution that clustered the data and we would not e able to know if it was good due to the its nature (non supervised). Also the nuber of cluster is not a solved problem on the academic, we would have to come with heuristics to determine this value.
+After that, we introduced some terminology of the OT and its benchmark, alongside the explanation of how the leads are scored through block diagrams. Then, we tackled the clustering procedures. In the choice of the algorithm and number of clusters the team decided to adopt a "manual" approach of solving these problems. The clustering strategy and pairing chosen were \nameClusterStrategyA{} and \nameClusterPairingA{}, respectively. From both of these, two experiments were design to test the clustering: \nameExperimentI{} and \nameExperimentII{}.
 
-The poc is an opportunity to quickly test an idea (waves of innovation)
+We analysed their results seeing that the former had a poor performance of approximately -9\% and the latter had a sightly improvement by 2\%. We also, further investigate their results by examining the similarity distribution plots of the studies of the groups former based on the lift gain. In this examination we saw the correlation between the lift and the similarity plot, and other studies' cases that did not workout as expected. Finally, we repeated experiment \nameExperimentII{} with other algorithms of clustering and saw that none of them surpassed the improvement of the "manual" approach.
 
-on top of that was the simplest solution this is an important factor when thinking about a software that is on production, more peopl will "mess" with the software, so we have to consider maintanability
+Outlined all the steps of this work and its outcomes we conclude that \textbf{it is not worth to pursue with this idea} of clustering data with the firmographics variables before the run of the OT. We judged that the value we would get from the amount of work remaining to do is minimal. For instance, the clustering algorithm is not in an optimal solution yet, when comparing to the result achieved by the manual approach. Hence, more work in testing new algorithms or adjusting parameters of a specific one would be required. All of this for an improvement in performance by 2\%. On top of that, this is the mean lift gain amongst all studies, that is, some studies had a decrease over 10\% in the lift while others had an increase. So there is the possibility of hurting the client with the OT in production. If the result had more consistency, for example, over 10\% mean improvement with, let us say, less then 3 studies with negative results then the further improvement of the PoC - the development of a Minimum Viable Product (MVP) - would be included in the development pipeline of the On Target's team. 
 
-This was an oportunity to know more about the problem of the OT through the plots, we sa that some of the studies have distinc/clear cluster on it, others have only one with some outliers. Also some of the OT users already "segment" the portfolio to run, so it makes sense
+\section{Takeaways}
 
-we see tha it is a dificult problem since there are a several different business scenraio. This diverse set of studies possibilis does not enable for a on-fit-all solution
+In spite of the unsatisfactory result in the performance attained, this work brought some insights for the team:
+\begin{itemize}
+    \item the practical approaches, like clustering the data manually, saved a lot of time and resources from the company. It would take too much from the team to develop a solution that clustered the data automatically without even knowing the value that it could bring. The PoC is an opportunity to quickly test an idea before putting the necessary effort to put it on production;
+    \item this was an opportunity to know more about the problem. We notice that some of the studies have distinct clusters on their portfolios while others were the case of a single cluster with outliers companies. This correlates well with the way of how Neoway's users use the OT. Some of them segment their portfolio based on their sales strategy, thus the data is already "clustered" by our client. This variability adds a layer of complexity to the design of the system. Moreover, Neoway address more than 20 verticals in the market. And the statistics of the data varies amongst them, in such way that this is not an easy problem. It is not a simple model that fulfils the requirement of consistent recommendations for all of these verticals. Knowing more about how is the data in this problem empowers the team to deliver better solutions;
+    \item it showed to us that sometimes the simplest solutions is the best way to go, as seen in experiment \nameExperimentII{}. This is a crucial factor when we take to account the fact that Neoway is a software company and its products are developed by a team of people. A complex solution hinders the maintainability aspect of the product, since it introduces more states for testing, logging and debugging;
+    \item we could test the limits of the OT. The minimum data to a valid run was the beginning of the inspection of how many companies must be in the portfolio and market (and their ratio) for the OT run with reliable results. We inspected some examples where the results were awful when their portfolio size were negligible when comparing to the market;
+    \item it enabled us to see that the lift (performance) is not the only relevant metric to evaluate the result of a study. The benchmark already brought up the discussion of new metrics for the OT. This work, reinforced that when we discussed in \ref{ch:worth-ment} about the study that had a positive lift gain while the sets in the similarity distribution shifted to lower values. This result raises the awareness of the team to improve the metrics and the consistency of the solution;
+\end{itemize}
 
-also this work bought the some insights to the product like, scoring the portfolio made us see that our sampling on the holdset is not acurate enough
+%%% OBS %%%
+% Usually there is a future work section in the TCCS, however I stated that it is not worth it to continue with this.
 
-it tested the minium set of possible data of the OT
-
-performance is not the only relevant metric for the case, we have to consider also the similarity distribution or even new metrics
-
-conslusion: it is not worth it to proceed with this in the case of improve the OT performance. the gain is marginal in contrast to the work needed it
-
-our initial hypothesis was not proved.....
-
-\section*{Future work}
-
-AS mentioned  in (outlier) this was not runned on the original benchmark project, but on a separeted environment. 
-
-It is worth it to runned on production environmetn to see if the result the same result is achieved.
-
-The GMM showed the best performance amng the non manual cluster algorithms with default paremeters, sme twinking on the hyper parameters could improve the perfornce
-
- on top of that the gmm showed that some of the numer of clusters assignamets is wrong like in Figure ... a review of the manual 
- 
-\begin{enumerate}
-  \item next point to be worked on 
-  \item next point to be worked on 
-  \item next point to be worked on 
-  \item next point to be worked on 
-  \item next point to be worked on 
-\end{enumerate}
+% \section{Future work}
+% Run in the production environment
+% Improve the GMM algorithms (mess with the hyper parameters)
+% Redo number of clusters assignment based on the results of the GMM clustering
