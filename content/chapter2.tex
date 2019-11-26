@@ -45,6 +45,12 @@ Lift is a ratio between probabilities. The probability of selecting one of the t
 	lift = \frac{RS sorting prob}{random chance}
 \end{equation}
 
+Suppose your market set is given $\mathcal M$ with size $|\mathcal M |\!=\!N$ and let the subset $\mathcal L \supset \mathcal M $, with $|\mathcal L|\!=\!n$, represent all companies within the market that would lead to a conversion. The set $\mathcal L$ is of course unknown and the problem is to chose a strategy that recommends companies in $\mathcal M$ such that it is also belongs to $\mathcal L$. The probability for a random strategy is uniform across the population and is given by $n/N$. Suppose now that to each company $X_i$ you associated a score $S_i$ and ordered the companies from the highest to lowest score, i.e. $S_i>S_{i-1}$ for all $i$ and started picking from $S_N$ to $S_1$. For any $k$, the lift is how much better this strategy is up to $k$ relative to the random strategy, i.e.
+\begin{equation}
+    \mathrm{lift}_k = \frac{P(X_{i:k\leq i\leq N}\in \mathcal L)}{n/N}.
+\end{equation}
+
+
 To illustrate further, let us use an example of a box with colored balls. Imagine that there is a rectangular box where its height and depth allows only a single ball to fit, but its width allows up to 100 balls. There are two types of balls: the \textbf{red} ones that represent our \textbf{target population} and the blue ones. 90 of the 100 balls are blue and the remaining 10 are red. Moreover, this box is divided into sectors where each sector is a decile, meaning that there are 10 sectors, each one with 10 balls. The sectors, also, have a priority, they from left to right. The Figure \ref{fig:rec-box} shows hows this box looks like.
 
 \begin{figure}[h]
