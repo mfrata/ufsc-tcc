@@ -96,12 +96,11 @@ There are various approaches used to cluster a dataset \cite{wikipedia_cluster_a
 
 % caveat
 There is no single best algorithm on cluster analysis \cite{james2013introduction}. All of these mentioned, have pros and cons and are fit to different kind of problems. Some are suited to find the number of clusters but at the same time do not scale with a high volume of data (Hierarchical) \cite{franti2006fast}, others are fast and simple but they have to know the number clusters in advance (KMeans). Hence, it is important to test different algorithms and their parameters to see if the analysis perform on a given problem.
-% Didn't like this last sentence
 
 \section{Principal Component Analysis}
 
 % what
-Principal Component Analysis, or PCA for short, is an orthogonal linear transformation \cite{wikipedia_pca} where you "break down" a dataset - that can have correlation between the dimensions - into an independent set of variables called \textbf{Principal Components}. These components maintain the original data variance, or in practical terms, the amount of information. They are sorted in a descending fashion, where the first principal component (PC1) has the most variance and PC$N$, has the least variance. $N$ goes up to the number of the smallest dimension (rows or columns), the minimum between these two. 
+Principal Component Analysis, or PCA for short, is an orthogonal linear transformation \cite{wikipedia_pca} where you "break down" a dataset - that can have correlation between the dimensions - into an independent set of variables called \textbf{Principal Components}. These components maintain the original data variance, or in practical terms, the amount of information. They are sorted in a descending fashion, where the first principal component (PC1) has the most variance and PC$_{N}$, has the least variance. $N$ goes up to the number of the smallest dimension (rows or columns), the minimum between these two. 
 
 %how
 To understand how the PCA works in an intuitive way, Figure \ref{fig:pca-steps} illustrates the steps of the PCA algorithm on a dataset with two variables.

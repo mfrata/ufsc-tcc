@@ -105,7 +105,7 @@ The last aspect of the cluster analysis was the choice of the algorithm. From th
 
 The last three did not run on some studies that have a market size in an order of magnitude of dozen of thousands companies, due to memory error\footnote{all the algorithms were running on a machine with 250 GB of RAM}. Because of their high memory complexity \cite{franti2006fast}, \cite{ester1996density}, \cite{yan2009fast}, they were discarded.
 
-The studies were also clustered \underline{manually} in order to be used as a benchmark for the algorithms. Since most of the PCA plots present a regression characteristic, these boundaries were lines equations. Figure \ref{fig:clustering-studies} shows the results for some of the studies using "Manual Clustering", KMeans, Gaussian Mixture (GMM) and Bayesian Gaussian Mixture (BayesianGM).
+The studies were also clustered manually in order to be used as a benchmark for the algorithms. Since most of the PCA plots present a regression characteristic, these boundaries were lines equations. Figure \ref{fig:clustering-studies} shows the results for some of the studies using "Manual Clustering", KMeans, Gaussian Mixture (GMM) and Bayesian Gaussian Mixture (BayesianGM).
 
 As we can see the algorithms did not get the shape of the data in some of the studies. The Bayesian and GMM had better results relative to the KMeans. But they did not assign the clusters as expected, for instance, on the third and sixth row of Figure \ref{fig:clustering-studies}. Due to these reasons and the same argument explained on the number of clusters discussion - we are interested on the results on the RS and not in the cluster analysis itself - it was decided by the team to start to the experiments using the "Manual Clustering".
 

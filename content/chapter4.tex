@@ -36,7 +36,7 @@ There are also some studies that are bolded. They represent the studies that bro
 
 We can see that only five studies had positive impact on the lift, and one of them is an outlier. The majority of the studies had a negative impact six of them were sightly negative and fourteen worsened the lift considerably. It is important to notice that two studies did not present any changes on the lift with the clustering.
 
-Figure \ref{fig:lift-hist-plot-exp-i} shows a histogram of the lift gain for the studies excluding the outliers. We can see that the mean lift gain for \nameExperimentI{} is $-9.871 \%$.
+Figure \ref{fig:lift-hist-plot-exp-i} shows a histogram of the lift gain for the studies excluding the outliers. We can see that the mean lift gain for \nameExperimentI{} is $-9,871 \%$.
 
 \begin{figure}[h]
    \centering
@@ -75,7 +75,7 @@ Now for the second experiment, which was the simple use of the clustering inform
 
 We can see that, differently from \nameExperimentI{}, the majority of the studies had positive gain (16 studies, to be exactly). Only four studies were considerably worse on the lift gain and five sightly worse, a total of nine studies. Only one study did not present any change to the lift and, this time, four were outliers (two positives and two negatives).
 
-Figure \ref{fig:lift-hist-plot-exp-ii} shows a histogram of the lift gain for the studies excluding the outliers. We see that the mean lift gain for \nameExperimentII{} is $2.016 \%$.
+Figure \ref{fig:lift-hist-plot-exp-ii} shows a histogram of the lift gain for the studies excluding the outliers. We see that the mean lift gain for \nameExperimentII{} is $2,016 \%$.
 
 \begin{figure}[h]
    \centering
@@ -91,7 +91,7 @@ Now let us look at some of the similarity distributions plots for both experimen
 
 \subsection{Studies with no change to the lift}
 
-In both experiments there were studies that did not lead to any change to the lift. Study Four appeared on both. Figure \ref{fig:study-4-comparsion} shows the similarity distribution plots for Study Four. The first row is the run of the OT without the clustering, and the second row is with the clustering. To the left is presented the \nameExperimentI{} experiment and on the right \nameExperimentII{}. There is, also, on the information about the size of the sets in the study. This is a study with around 4600 companies on the portfolio (1100 are the Holdout set) and a market around 220 thousand companies, meaning that the portfolio corresponds to approximately $1.5\%$ of the companies on the study.
+In both experiments there were studies that did not lead to any change to the lift. Study Four appeared on both. Figure \ref{fig:study-4-comparsion} shows the similarity distribution plots for Study Four. The first row is the run of the OT without the clustering, and the second row is with the clustering. To the left is presented the \nameExperimentI{} experiment and on the right \nameExperimentII{}. There is, also, on the information about the size of the sets in the study. This is a study with around 4600 companies on the portfolio (1100 are the Holdout set) and a market around 220 thousand companies, meaning that the portfolio corresponds to approximately $1,5\%$ of the companies on the study.
 
 \begin{figure}[h]
    \centering
@@ -120,7 +120,7 @@ Another study that had a zero lift gain was Study 22, in the \nameExperimentI{} 
    \label{fig:study-22-clusters-simi-plot}
 \end{figure}
 
-Although this study has three clusters on the portfolio, only Cluster 1 has the minimum data to a valid run. Cluster 0 and Cluster 2 do not have companies on the Market, so the sixteen companies of the former and thirteen companies of the latter were discarded. Since they represent less than $0.001\%$ of the overall data of the study, the behavior is practically the same as Study 4, thus, for the same reason, the lift is the same for both runs (with and without clustering).
+Although this study has three clusters on the portfolio, only Cluster 1 has the minimum data to a valid run. Cluster 0 and Cluster 2 do not have companies on the Market, so the sixteen companies of the former and thirteen companies of the latter were discarded. Since they represent less than $0,001\%$ of the overall data of the study, the behavior is practically the same as Study 4, thus, for the same reason, the lift is the same for both runs (with and without clustering).
 
 \subsection{Studies with marginal increase or decrease on the lift}
 \label{ch:marginal-change}
@@ -140,19 +140,19 @@ All of these studies had the same prevalent behavior: the overall distributions 
    \label{fig:study-12-marginal-decrease-exp-1}
 \end{figure}
 
-We can notice that the peak near similarity 1 of the holdout set goes from approximately 37 to beyond 40 in Figure \ref{fig:study-5-marginal-increase-exp-2}. The opposite happens in Figure \ref{fig:study-12-marginal-decrease-exp-1}, the peak goes from almost 25 to 20.
+We can notice that the peak near similarity $1,0$ of the holdout set goes from approximately $37,0$ to beyond $40,0$ in Figure \ref{fig:study-5-marginal-increase-exp-2}. The opposite happens in Figure \ref{fig:study-12-marginal-decrease-exp-1}, the peak goes from almost $25,0$ to $20,0$.
 
 \subsection{Studies with considerable increase or decrease to the lift}
 \label{ch:considerable-change}
 
-Most of the studies on both experiments had more than 5\% variation to the lift (positive and negative). In \nameExperimentI{}, 14 of them were negative (Studies: 1, 6, 7, 9, 11, 13, 15, 16, 18, 19, 21, 23, 25, 26), and only Study 2 was positive. However, in experiment \nameExperimentII{}, 5 were positive (Studies: 7, 8, 9, 10, 14) and 4 were negative (Studies: 2, 11, 16, 20).
+Most of the studies on both experiments had more than $5\%$ variation to the lift (positive and negative). In \nameExperimentI{}, fourteen of them were negative (Studies: 1, 6, 7, 9, 11, 13, 15, 16, 18, 19, 21, 23, 25, 26), and only Study 2 was positive. However, in experiment \nameExperimentII{}, five were positive (Studies: 7, 8, 9, 10, 14) and four were negative (Studies: 2, 11, 16, 20).
 
-The behavior of the similarity distributions with the clustering follows the same idea as section \ref{ch:marginal-change}, but with more exacerbate results. Figure \ref{fig:study-8-considerable-increase-exp-2} shows the similarity distributions with and without clustering for \underline{Study 8} in experiment \nameExperimentII{}, which is an example of a considerable increase on lift. In contrast, Figure \ref{fig:study-9-considerable-decrease-exp-1} displays the same plot for Study 9 in experiment \nameExperimentI{}, an example of considerable decrease on the lift.
+The behavior of the similarity distributions with the clustering follows the same idea as section \ref{ch:marginal-change}, but with more exacerbate results. Figure \ref{fig:study-8-considerable-increase-exp-2} shows the similarity distributions with and without clustering for Study 8 in experiment \nameExperimentII{}, which is an example of a considerable increase on lift. In contrast, Figure \ref{fig:study-9-considerable-decrease-exp-1} displays the same plot for Study 9 in experiment \nameExperimentI{}, an example of considerable decrease on the lift.
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=7cm]{fig/ch4-study-8-considerable-increase-exp-2.png}
-   \caption{Similarity distribution plot for \underline{Study 8} on experiment \nameExperimentII{}. An example of considerable increase on the lift. Source: Author}
+   \caption{Similarity distribution plot for Study 8 on experiment \nameExperimentII{}. An example of considerable increase on the lift. Source: Author}
    \label{fig:study-8-considerable-increase-exp-2}
 
    \includegraphics[width=7cm]{fig/ch4-study-9-considerable-decrease-exp-1.png}
@@ -160,7 +160,7 @@ The behavior of the similarity distributions with the clustering follows the sam
    \label{fig:study-9-considerable-decrease-exp-1}
 \end{figure}
 
-Now the difference between the distributions, in these cases, is easier to spot. In Figure \ref{fig:study-8-considerable-increase-exp-2} we can see that the peak of the holdout set rose from 10 to more than 30. Consequentially, the curve became more thin, meaning that its variance decreased. The contrary to this, is showed on Figure \ref{fig:study-9-considerable-decrease-exp-1}. The peak of the holdout set distribution went from 20 to less than 10. Also, the portfolio distribution changed. Its single peak decreased by 15 units, and it was splitted in two peaks, one near 0.9 similarity and the other near similarity 1.0. This demonstrates that the OT was better at scoring the portfolio near similarity 1.0 without the clustering, which is the expected behavior. Moreover, the distribution of the market skewed to the right on this run, creating a high density area near 0.9 similarity. 
+Now the difference between the distributions, in these cases, is easier to spot. In Figure \ref{fig:study-8-considerable-increase-exp-2} we can see that the peak of the holdout set rose from $10,0$ to more than $30,0$. Consequentially, the curve became more thin, meaning that its variance decreased. The contrary to this, is showed on Figure \ref{fig:study-9-considerable-decrease-exp-1}. The peak of the holdout set distribution went from $20,0$ to less than $10,0$. Also, the portfolio distribution changed. Its single peak decreased by $15$ units, and it was splitted in two peaks, one near $0,9$ similarity and the other near similarity $1,0$. This demonstrates that the OT was better at scoring the portfolio near similarity $1,0$ without the clustering, which is the expected behavior. Moreover, the distribution of the market skewed to the right on this run, creating a high density area near $0,9$ similarity. 
 
 \subsection{Outliers studies}
 \label{ch:outliers}
@@ -178,26 +178,26 @@ Study 24 was clearly the outlier of all studies. It got more than $200\%$ increa
    \label{fig:outlier-study-24-lift-exp-2}
 \end{figure}
 
-The main aspect of this study is presented in Figure \ref{fig:outlier-study-24-exp-2}. The Figure shows unusual distributions with multiple modes (without clustering), the highest one located at similarity 0.8. The OT failed to classify the portfolio of this study close similarity 1.0. Moreover, the number of companies for each of the sets of the study is unbalanced. There are only 35 companies in the portfolio and 12 in the holdout set against a market with two orders of magnitude higher. This discrepancy can be one of the issues that led this study to have odd similarity distributions.
+The main aspect of this study is presented in Figure \ref{fig:outlier-study-24-exp-2}. The Figure shows unusual distributions with multiple modes (without clustering), the highest one located at similarity $0,8$. The OT failed to classify the portfolio of this study close similarity $1,0$. Moreover, the number of companies for each of the sets of the study is unbalanced. There are only 35 companies in the portfolio and twelve in the holdout set against a market with two orders of magnitude higher. This discrepancy can be one of the issues that led this study to have odd similarity distributions.
 
-This issue is reinforced when we look at Figure \ref{fig:outlier-study-24-lift-exp-2}. The expected shape of a lift curve is in the form of a decreasing exponential, in other words, the lift of the decile on the left is greater than the one in the right, but this is not what happens on both runs of the experiment for this study. In the run with the clustering the lift of the second decile is lower than the fourth one. On top of that, the lift of the first decile in the run without the clustering is lower than 1.0. 
+This issue is reinforced when we look at Figure \ref{fig:outlier-study-24-lift-exp-2}. The expected shape of a lift curve is in the form of a decreasing exponential, in other words, the lift of the decile on the left is greater than the one in the right, but this is not what happens on both runs of the experiment for this study. In the run with the clustering the lift of the second decile is lower than the fourth one. On top of that, the lift of the first decile in the run without the clustering is lower than $1,0$. 
 
-With the clustering, the distributions skewed to the right, with the holdout set being the closest to similarity 1.0. This explains why the lift of the first decile increased over $200\%$ in the run with the clustering.
+With the clustering, the distributions skewed to the right, with the holdout set being the closest to similarity $1,0$. This explains why the lift of the first decile increased over $200\%$ in the run with the clustering.
 
 \subsection{Studies that had multiple profiles in its portfolio}
 
 The last group of studies to be analyzed are the bolded ones in both tables (\ref{table:lift_gain_exp-i} and \ref{table:lift_gain_exp-ii}). These are the studies that sparked the idea of clustering the portfolio before running the OT. However, most of them did not had the expected behavior. Let us use one example that illustrate this result. Figure \ref{fig:bump-study-25} displays the similarity distributions plots for Study 25 for the runs in experiment \nameExperimentII{}. 
 
-Study 25 is a study with a positive lift gain, that is, the performance of the study improved. However, looking at Figure \ref{fig:bump-study-25} we notice that the three modes of the portfolio distributions in the run without the clustering are preserved in the run with the clustering. We expected that each one of these peaks would shift to the right, close to similarity 1.0. 
+Study 25 is a study with a positive lift gain, that is, the performance of the study improved. However, looking at Figure \ref{fig:bump-study-25} we notice that the three modes of the portfolio distributions in the run without the clustering are preserved in the run with the clustering. We expected that each one of these peaks would shift to the right, close to similarity $1,0$. 
 
-If we take a look at each clusters' similarity distributions plot we can see more clues for this behavior. Figure \ref{fig:study-25-clusters-pca} shows these plots (I), alongside the clusters' sets sizes of the runs that did not had enough data (II) and its PCA plot with the portfolio and the market (III). There are 5 cluster in the portfolio, but only two (Cluster 3 and 4) had a pair with the market. In these cases we see that they did not present a "one peak area" in the portfolio. Cluster 4 has two peaks: one near similarity 1.0 and the other near 0.8, and Cluster 3 two close peaks near similarity 0.9. The other clusters with not enough data (0, 1, 2), the portfolio and holdout sets correspond to approximately 10\% of the study portfolio size. This is a small portion of the data and it only affects \nameExperimentI{}, after all, in \nameExperimentII{} there is no cluster pairing, since this information is used as a feature.
+If we take a look at each clusters' similarity distributions plot we can see more clues for this behavior. Figure \ref{fig:study-25-clusters-pca} shows these plots (I), alongside the clusters' sets sizes of the runs that did not had enough data (II) and its PCA plot with the portfolio and the market (III). There are five cluster in the portfolio, but only two (Cluster 3 and 4) had a matching pair with the market. In these cases we see that they did not present a "one peak area" in the portfolio. Cluster 4 has two peaks: one near similarity $1,0$ and the other near $0,8$, and Cluster 3 two close peaks near similarity $0,9$. The other clusters with not enough data (0, 1, 2), the portfolio and holdout sets correspond to approximately $10\%$ of the study portfolio size. This is a small portion of the data and it only affects \nameExperimentI{}, after all, in \nameExperimentII{} there is no cluster pairing, since this information is used as a feature.
 
-The outcome of these studies demonstrate that, perhaps, \textbf{our initial hypothesis is not on point}. There still other analysis to be done, such as, analyzing the companies from the similarity perspective, for instance, seeing what the companies in the high density area near similarity 0.9 of some study have in common. These new perspectives emerged as the work was being developed. However, because of the time constraint, they could not be prioritized in this proof of concept. 
+The outcome of these studies demonstrate that, perhaps, \textbf{our initial hypothesis is not on point}. There still other analysis to be done, such as, analyzing the companies from the similarity perspective, for instance, seeing what the companies in the high density area near similarity $0,9$ of some study have in common. These new perspectives emerged as the work was being developed. However, because of the time constraint, they could not be prioritized in this proof of concept. 
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=7cm]{fig/ch4-bump-study-25.png}
-   \caption{Similarity distribution plot for \underline{Study 25} on experiment \nameExperimentII{}. An example of study with multiple high density areas in the portfolio. Source: Author}
+   \caption{Similarity distribution plot for Study 25 on experiment \nameExperimentII{}. An example of study with multiple high density areas in the portfolio. Source: Author}
    \label{fig:bump-study-25}
 
    \includegraphics[width=\linewidth]{fig/ch4-study-25-clusters-pca.png}
@@ -208,9 +208,9 @@ The outcome of these studies demonstrate that, perhaps, \textbf{our initial hypo
 \subsection{Other relevant studies}
 \label{ch:worth-ment}
 
-There is another study that is not in one of the specifics lift-gain groups aforementioned, but its analysis of the similarity distribution is worth to be considered. Figure \ref{fig:worth-mentioning-study-7} shows the similarity distribution plots for \underline{Study 7} in the experiment \nameExperimentII{}. This study had a lift gain of $12.5\%$, so its performance improved, thus the expected impact in the distributions is the holdout set increase its peak near similarity 1.0 or to shift to this region when the distribution is located more on the left of the axis. Nonetheless, the opposite happens in this study. In Figure \ref{fig:worth-mentioning-study-7}, we see that the distributions keep its shape but shifted from similarity 1.0 to around 0.85. But since the holdout distribution stayed more in the right, in the first decile there are more companies from the holdout set, hence the increase on the lift
+There is another study that is not in one of the specifics lift-gain groups aforementioned, but its analysis of the similarity distribution is worth to be considered. Figure \ref{fig:worth-mentioning-study-7} shows the similarity distribution plots for Study 7 in the experiment \nameExperimentII{}. This study had a lift gain of $12.5\%$, so its performance improved, thus the expected impact in the distributions is the holdout set increase its peak near similarity $1,0$ or to shift to this region when the distribution is located more on the left of the axis. Nonetheless, the opposite happens in this study. In Figure \ref{fig:worth-mentioning-study-7}, we see that the distributions keep its shape but shifted from similarity $1,0$ to around $0,85$. But since the holdout distribution stayed more in the right, in the first decile there are more companies from the holdout set, hence the increase on the lift
 
-The cause of this shift was not investigated. But the main point of mentioning this study is to raise the awareness of the OT's team in the choice of metrics. This example indicate that only the lift is not enough to verify the output of the OT. As seen throughout section \ref{ch:simi-distis}, the lift and the similarity distribution plot are correlated, specially the distribution of the holdout set. Still, the lift is a metric of \underline{performance} and the similarity distribution plot shows the \underline{consistency} of the study. The shift of Study 7 was not critical, but if the similarity that the distributions went was 0.3 instead of the 0.85, the recommendations would not make sense for the OT's user due to its lack of consistency. That is why a new metric, that take into account consistency and performance, should be included in the overall benchmark of the studies.
+The cause of this shift was not investigated. But the main point of mentioning this study is to raise the awareness of the OT's team in the choice of metrics. This example indicate that only the lift is not enough to verify the output of the OT. As seen throughout section \ref{ch:simi-distis}, the lift and the similarity distribution plot are correlated, specially the distribution of the holdout set. Still, the lift is a metric of \underline{performance} and the similarity distribution plot shows the \underline{consistency} of the study. The shift of Study 7 was not critical, but if the similarity that the distributions went was $0,3$ instead of the $0,85$, the recommendations would not make sense for the OT's user due to its lack of consistency. That is why a new metric, that take into account consistency and performance, should be included in the overall benchmark of the studies.
 
 \begin{figure}[h]
    \centering
@@ -221,7 +221,7 @@ The cause of this shift was not investigated. But the main point of mentioning t
 
 \section{Experiment \nameExperimentII{} with other clustering algorithms}
 
-The poor performance of the studies in experiment \nameExperimentI{}, which as the mean lift gain of $-9.871\%$, made the team of the OT to not proceed the testing of the clustering with this experiment. Although \nameExperimentII{} had a positive mean lift gain of $+2.016\%$, it was conducted with the "manual clustering". Thus, it was determined to oversee the results of this experiment with the other clustering algorithms previously presented in Figure \ref{fig:clustering-studies}. Figure \ref{fig:other-cluster-algo} shows the histogram of the lift gains of the re-runs for \nameExperimentII{} with \underline{KMeans} (top left), Gaussian Mixture (top right), and Bayesian Gaussian Mixture (below).
+The poor performance of the studies in experiment \nameExperimentI{}, which as the mean lift gain of $-9.871\%$, made the team of the OT to not proceed the testing of the clustering with this experiment. Although \nameExperimentII{} had a positive mean lift gain of $+2.016\%$, it was conducted with the "manual clustering". Thus, it was determined to oversee the results of this experiment with the other clustering algorithms previously presented in Figure \ref{fig:clustering-studies}. Figure \ref{fig:other-cluster-algo} shows the histogram of the lift gains of the re-runs for \nameExperimentII{} with KMeans (top left), Gaussian Mixture (top right), and Bayesian Gaussian Mixture (below).
 
 We notice that none of them reached the lift gain of the "manual clustering". The closest one was the Gaussian Mixture with $1.13\%$. The other two resided below $1\%$ ($0.8$ for KMeans and approximately $0.3$ for Bayesian Gaussian Mixture). The outcome of these results consolidate the strategy of cluster the studies manually, meaning that the groups in the PCA plots make sense, at least in the performance perspective of the OT. 
 
