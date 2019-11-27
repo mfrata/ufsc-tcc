@@ -36,7 +36,7 @@ There are also some studies that are bolded. They represent the studies that bro
 
 We can see that only five studies had positive impact on the lift, and one of them is an outlier. The majority of the studies had a negative impact six of them were sightly negative and fourteen worsened the lift considerably. It is important to notice that two studies did not present any changes on the lift with the clustering.
 
-Figure \ref{fig:lift-hist-plot-exp-i} shows a histogram of the lift gain for the studies excluding the outliers. We can see that the mean lift gain for \nameExperimentI{} is \textbf{-9.871 \%}.
+Figure \ref{fig:lift-hist-plot-exp-i} shows a histogram of the lift gain for the studies excluding the outliers. We can see that the mean lift gain for \nameExperimentI{} is $-9.871 \%$.
 
 \begin{figure}[h]
    \centering
@@ -73,9 +73,9 @@ Now for the second experiment, which was the simple use of the clustering inform
 \label{table:lift_gain_exp-ii}
 \end{table}
 
-We can see that, differently from \nameExperimentI{}, the majority of the studies had positive gain (16 studies, to be exactly). Only 4 studies were considerably worse on the lift gain and 5 sightly worse, a total of 9 studies. Only one study did not presente any change to the lift and, this time, four were outliers (two positives and two negatives).
+We can see that, differently from \nameExperimentI{}, the majority of the studies had positive gain (16 studies, to be exactly). Only four studies were considerably worse on the lift gain and five sightly worse, a total of nine studies. Only one study did not present any change to the lift and, this time, four were outliers (two positives and two negatives).
 
-Figure \ref{fig:lift-hist-plot-exp-ii} shows a histogram of the lift gain for the studies excluding the outliers. We see that the mean lift gain for \nameExperimentII{} is \textbf{2.016 \%}.
+Figure \ref{fig:lift-hist-plot-exp-ii} shows a histogram of the lift gain for the studies excluding the outliers. We see that the mean lift gain for \nameExperimentII{} is $2.016 \%$.
 
 \begin{figure}[h]
    \centering
@@ -96,14 +96,14 @@ In both experiments there were studies that did not lead to any change to the li
 \begin{figure}[h]
    \centering
    \includegraphics[width=\linewidth]{fig/ch4-study-4-comparsion.jpg}
-   \caption{Similarity distribution plot for \underline{Study 4} for both experiments. Source: Author}
+   \caption{Similarity distribution plot for Study 4 for both experiments. Source: Author}
    \label{fig:study-4-comparsion}
 \end{figure}
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=\linewidth]{fig/ch4-study-4-pca-plot.png}
-   \caption{PCA plot for \underline{Study 4}. The red line was introduced to serve as a reference scale. Source: Author}
+   \caption{PCA plot for Study 4. The red line was introduced to serve as a reference scale. Source: Author}
    \label{fig:study-4-pca-plot}
 \end{figure}
 
@@ -111,32 +111,32 @@ We can see that on \nameExperimentI{} the similarity distributions with and with
 
 On \nameExperimentII{}, however, there is a difference on the distributions between the with and without the clustering. Basically, the holdout set changed its distribution. In this experiment the OT scored these companies with really close scores, in other words, their standard deviation decreased. But, even though the scores of the companies (and possibly the ordering) of the holdout set changed, the lift kept the same because of how it is calculated. The same number of companies (of the holdout set) on the first decile occurred in the run without the clustering and in with the clustering, thus the value of the lift is the same for both runs.
 
-Another study that had a zero lift gain was \underline{Study 22}, in the \nameExperimentI{} experiment. Figure \ref{fig:study-22-clusters-simi-plot} shows the similarity distribution plots for the clusters' runs of this study.
+Another study that had a zero lift gain was Study 22, in the \nameExperimentI{} experiment. Figure \ref{fig:study-22-clusters-simi-plot} shows the similarity distribution plots for the clusters' runs of this study.
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=\linewidth]{fig/ch4-study-22-clusters-simi-plot.png}
-   \caption{Similarity distribution plot for the clusters' runs of \underline{Study 22} on experiment \nameExperimentI{}. Source: Author}
+   \caption{Similarity distribution plot for the clusters' runs of Study 22 on experiment \nameExperimentI{}. Source: Author}
    \label{fig:study-22-clusters-simi-plot}
 \end{figure}
 
-Although this study has 3 clusters on the portfolio, only Cluster 1 has the minimum data to a valid run. Cluster 0 and Cluster 2 do not have companies on the Market, so the 16 companies of the former and 13 companies of the latter were discarded. Since they represent less than $0.001\%$ of the overall data of the study, the behavior is practically the same as Study 4, thus, for the same reason, the lift is the same for both runs (with and without clustering).
+Although this study has three clusters on the portfolio, only Cluster 1 has the minimum data to a valid run. Cluster 0 and Cluster 2 do not have companies on the Market, so the sixteen companies of the former and thirteen companies of the latter were discarded. Since they represent less than $0.001\%$ of the overall data of the study, the behavior is practically the same as Study 4, thus, for the same reason, the lift is the same for both runs (with and without clustering).
 
 \subsection{Studies with marginal increase or decrease on the lift}
 \label{ch:marginal-change}
 
 Both experiments had studies that changed the lift in a minor way, positively and negatively. These studies improved or lowered the lift up to approximately $5\%$. Studies 3, 20 and studies 5, 12, 14, 17, 27 are, respectively, examples of sight improvement and deterioration on the lift for the experiment \nameExperimentI{}. For experiment \nameExperimentII{} the studies are, respectively: studies 5, 13, 15, 19, 22, 25, 27 and studies 12, 18, 21, 23, 26.
 
-All of these studies had the same prevalent behavior: the overall distributions of the three sets (portfolio, holdout, and market) before and after the clustering were almost the same. There is a small difference to the holdout distribution. Figures \ref{fig:study-5-marginal-increase-exp-2} and \ref{fig:study-12-marginal-decrease-exp-1} illustrate, respectively, examples of a small increase and decrease on the lift. In the former, the similarity distributions plot for \underline{Study 5} in experiment \nameExperimentII{}, and in the latter the same plot for \underline{Study 12} for experiment \nameExperimentI{}.
+All of these studies had the same prevalent behavior: the overall distributions of the three sets (portfolio, holdout, and market) before and after the clustering were almost the same. There is a small difference to the holdout distribution. Figures \ref{fig:study-5-marginal-increase-exp-2} and \ref{fig:study-12-marginal-decrease-exp-1} illustrate, respectively, examples of a small increase and decrease on the lift. In the former, the similarity distributions plot for Study 5 in experiment \nameExperimentII{}, and in the latter the same plot for Study 12 for experiment \nameExperimentI{}.
 
 \begin{figure}[h]
    \centering
    \includegraphics[width=7cm]{fig/ch4-study-5-marginal-increase-exp-2.png}
-   \caption{Similarity distribution plot for \underline{Study 5} on experiment \nameExperimentII{}. An example of marginal increase on the lift. Source: Author}
+   \caption{Similarity distribution plot for Study 5 on experiment \nameExperimentII{}. An example of marginal increase on the lift. Source: Author}
    \label{fig:study-5-marginal-increase-exp-2}
 
    \includegraphics[width=7cm]{fig/ch4-study-12-marginal-decrease-exp-1.png}
-   \caption{Similarity distribution plot for \underline{Study 12} on experiment \nameExperimentI{}. An example of marginal decrease on the lift. Source: Author}
+   \caption{Similarity distribution plot for Study 12 on experiment \nameExperimentI{}. An example of marginal decrease on the lift. Source: Author}
    \label{fig:study-12-marginal-decrease-exp-1}
 \end{figure}
 
@@ -156,7 +156,7 @@ The behavior of the similarity distributions with the clustering follows the sam
    \label{fig:study-8-considerable-increase-exp-2}
 
    \includegraphics[width=7cm]{fig/ch4-study-9-considerable-decrease-exp-1.png}
-   \caption{Similarity distribution plot for \underline{Study 9} on experiment \nameExperimentI{}. An example of considerable decrease on the lift. Source: Author}
+   \caption{Similarity distribution plot for Study 9 on experiment \nameExperimentI{}. An example of considerable decrease on the lift. Source: Author}
    \label{fig:study-9-considerable-decrease-exp-1}
 \end{figure}
 
@@ -170,11 +170,11 @@ Study 24 was clearly the outlier of all studies. It got more than $200\%$ increa
 \begin{figure}[h]
    \centering
    \includegraphics[width=7cm]{fig/ch4-outlier-study-24-exp-2.png}
-   \caption{Similarity distribution plot for \underline{Study 24} on experiment \nameExperimentII{}. Source: Author}
+   \caption{Similarity distribution plot for Study 24 on experiment \nameExperimentII{}. Source: Author}
    \label{fig:outlier-study-24-exp-2}
 
    \includegraphics[width=7cm]{fig/ch4-outlier-study-24-lift-exp-2.png}
-   \caption{Lift plot for \underline{Study 24} on experiment \nameExperimentII{}. Source: Author}
+   \caption{Lift plot for Study 24 on experiment \nameExperimentII{}. Source: Author}
    \label{fig:outlier-study-24-lift-exp-2}
 \end{figure}
 
@@ -186,7 +186,7 @@ With the clustering, the distributions skewed to the right, with the holdout set
 
 \subsection{Studies that had multiple profiles in its portfolio}
 
-The last group of studies to be analyzed are the bolded ones in both tables (\ref{table:lift_gain_exp-i} and \ref{table:lift_gain_exp-ii}). These are the studies that sparked the idea of clustering the portfolio before running the OT. However, most of them did not had the expected behavior. Let us use one example that illustrate this result. Figure \ref{fig:bump-study-25} displays the similarity distributions plots for \underline{Study 25} for the runs in experiment \nameExperimentII{}. 
+The last group of studies to be analyzed are the bolded ones in both tables (\ref{table:lift_gain_exp-i} and \ref{table:lift_gain_exp-ii}). These are the studies that sparked the idea of clustering the portfolio before running the OT. However, most of them did not had the expected behavior. Let us use one example that illustrate this result. Figure \ref{fig:bump-study-25} displays the similarity distributions plots for Study 25 for the runs in experiment \nameExperimentII{}. 
 
 Study 25 is a study with a positive lift gain, that is, the performance of the study improved. However, looking at Figure \ref{fig:bump-study-25} we notice that the three modes of the portfolio distributions in the run without the clustering are preserved in the run with the clustering. We expected that each one of these peaks would shift to the right, close to similarity 1.0. 
 
@@ -201,7 +201,7 @@ The outcome of these studies demonstrate that, perhaps, \textbf{our initial hypo
    \label{fig:bump-study-25}
 
    \includegraphics[width=\linewidth]{fig/ch4-study-25-clusters-pca.png}
-   \caption{Clusters' similarity plots for \underline{Study 25} in experiment \nameExperimentI{} (I). The study's set sizes on the clusters that did not have enough data to a valid run (II). PCA plot for \underline{Study 25} with portfolio and market data. Source: Author}
+   \caption{Clusters' similarity plots for Study 25 in experiment \nameExperimentI{} (I). The study's set sizes on the clusters that did not have enough data to a valid run (II). PCA plot for Study 25 with portfolio and market data. Source: Author}
    \label{fig:study-25-clusters-pca}
 \end{figure}
 
@@ -215,7 +215,7 @@ The cause of this shift was not investigated. But the main point of mentioning t
 \begin{figure}[h]
    \centering
    \includegraphics[width=7cm]{fig/ch4-worth-mentioning-study-7.png}
-   \caption{Similarity distribution plot for \underline{Study 7} on experiment \nameExperimentII{}. Lift increased but the curves skewed to the left. Source: Author}
+   \caption{Similarity distribution plot for Study 7 on experiment \nameExperimentII{}. Lift increased but the curves skewed to the left. Source: Author}
    \label{fig:worth-mentioning-study-7}
 \end{figure}
 
