@@ -14,7 +14,7 @@ Neoway Business Solution is a Big Data Analytics company with solutions to Sales
    \label{fig:braz-comps-venn-diagram}
 \end{figure}
 
-Recently, the OT was updated, and a benchmark was created to compare between different versions. Overall the new version showed an improvement in the accuracy performance and consistency of the recommendation. By analysing cases in the benchmark, we conjectured that the performance could be further improved in some cases if perhaps the user's portfolio had been pre-clustered before running the recommender system, leading to a more homogeneous and consistent scoring of the market. The last point can be understood through Figure \ref{fig:simi-dist} which shows the distribution of the recommender score in a benchmark case. The recommender system is trained with samples from the user's portfolio and market and its score allows for an interpretation of a similarity measure. The higher the score, going from $0$ to $1$, the more similar is a company to companies in the user portfolio, i.e. the more similar they are, and are thus better qualified to be converted to a lead or client.
+Recently, the OT was updated, and a benchmark was created to compare between different versions. Overall the new version showed an improvement in the accuracy performance and consistency of the recommendation. By analysing cases in the benchmark, we conjectured that the performance could be further improved in some cases if perhaps the user's portfolio had been pre-clustered before running the recommender system, leading to a more homogeneous and consistent scoring of the market. The last point can be understood through Figure \ref{fig:simi-dist} which shows the distribution of the recommender score in a benchmark case. The recommender system is trained with samples from the user's portfolio and market and its score allows for an interpretation of a similarity measure. The higher the score, going from $0$ to $1$, the more similar is a company to companies in the user's portfolio, i.e. the more similar they are, and are thus better qualified to be converted to a lead or client\footnote{More about the similarity distribution plot will be explained on the chapter \ref{ch:methodology}.}.
 
 \begin{figure}[!ht]
     \begin{subfigure}{\linewidth}
@@ -33,9 +33,8 @@ Recently, the OT was updated, and a benchmark was created to compare between dif
     \label{fig:simi-dist}
 \end{figure}
 
-Similarity is how similar a company in the market is with the user's clients. The blue curve shows the recommender system is trained with samples from the user's portfolio and market and allows its score allows for an interpretation of a similarity measure. The higher the score, going from $0$ to $1$, the more similar is a company to companies in the user portfolio, i.e. the more similar they are, and are thus better qualified to be converted to a lead or client.\footnote{More about the similarity distribution plot will be explained on the chapter \ref{ch:methodology}.}
 % OBS: "high density probabilities areas" = "bump"
-\ref{fig:simi-dist:expected} is the best case scenario of a study, where all the portfolio's samples are close to similarity 1; The market has two high density probabilities areas: one close to similarity 0 and other close to similarity 1, in others words, some companies have no fit with the portfolio and others are alike the portfolio. The latter is the high quality leads to recommend to the user. \ref{fig:simi-dist:to-investigate} is an example of a study with a behavior may be improved. The portfolio's sample distribution has two concentrations of mass along the x-axis which can be interpreted that there were two types of customer's within the user's portfolio set. The aim of this thesis is to investigate whether this behavior can be improved by a pre-clustering strategy.
+\ref{fig:simi-dist:expected} is the best case scenario of a study, where all the portfolio's samples are close to similarity $1.0$. The market has two high density probabilities areas: one close to similarity $0$ and other close to similarity $1.0$, in others words, some companies have no fit with the portfolio and others are alike the portfolio. The latter is the high quality leads to recommend to the user. \ref{fig:simi-dist:to-investigate} is an example of a study with a behavior that may be improved. The portfolio's sample distribution has two concentrations of mass along the x-axis which can be interpreted that there were two types of customers within the user's portfolio set. The aim of this thesis is to investigate whether this behavior can be improved by a pre-clustering strategy.
 
 One hypothesis of the On Target's team is that in this study (and others alike) the client has a heterogeneous portfolio, \textbf{meaning that it can have two or more distinct profiles in it}. The algorithm tries to optimize for the mean profile of the whole portfolio which may not be the best approach.
 
@@ -48,7 +47,7 @@ In order to preserve interpretability, the clustering procedure will not include
 
 \subsection{General Objectives}
 
-The general objective of this work is to analyze whether the performance of the OnTarget improves by pre-clustering the portfolio with firmographics data before running the recommendation algorithm.
+The general objective of this work is to analyze whether the performance of the On Target improves by pre-clustering the portfolio with firmographics data before running the recommendation algorithm.
 
 \subsection{Specific Objectives}
 
@@ -58,7 +57,7 @@ Specific objectives of this work are:
     \item defining the pre-clustering strategy;
 	\item defining the pre-clustering algorithm;
     \item defining the number of clusters for the benchmark cases;
-    \item running OnTarget against the benchmark with the pre-clustering approach; and
+    \item running On Target against the benchmark with the pre-clustering approach; and
     \item analyzing the distribution of similarity scores and performance metrics against the benchmark.
 \end{itemize}
 

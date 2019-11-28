@@ -37,11 +37,11 @@ The Benchmark does some minor modification to the OT pipeline. It removes a rand
    \label{fig:ot-benchmark-blocks}
 \end{figure}
 
-These changes to the pipeline are to generate the metrics to evaluate the experiments in two ways. The first one, is the performance with the \textbf{lift}, usually only the first decile. The second one is consistency, with the \textbf{similarity distribution} plot. On the former, the holdout set is used to calculate the probabilities after the sorting of the OT - similar to the red balls analogy discussed on \ref{ch:evaluation}. The latter, plots the distribution of the scores assigned to the market and to the holdout set. As seen on the Introduction chapter of this work, Figure \ref{fig:simi-dist-expected-real} shows an example of this plot, where the orange are the holdout set and the blue curve is the market.
+These changes to the pipeline are to generate the metrics to evaluate the experiments in two ways. The first one, is the performance with the \textbf{lift}, usually only the first decile. The second one is consistency, with the \textbf{similarity distribution} plot. On the former, the holdout set is used to calculate the probabilities after the sorting of the OT - similar to the red balls analogy discussed on \ref{ch:evaluation}. The latter, plots the distribution of the scores assigned to the market and to the holdout set. As seen on the Introduction chapter of this work, Figure \ref{fig:simi-dist} shows an example of this plot, where the orange are the holdout set and the blue curve is the market.
 
 \section{Clustering}
 
-In this second part of the chapter it will be explained how the cluster analysis were conducted. It will be explained how and what are the clustering strategies and clusters pairing. Also, a discussion about definition of number of clusters and the choice of the clustering algorithm.
+In this second part of the chapter it will be explained how the cluster analysis were conducted. How and what are the clustering strategies and clusters pairing. Also, a discussion about definition of number of clusters and the choice of the clustering algorithm.
 
 \subsection{Clustering strategy and pairing}
 
@@ -59,7 +59,7 @@ In this second part of the chapter it will be explained how the cluster analysis
 
 The first thing to tackle was the definition of the clustering strategy and pairing. The clustering strategy dictates how the clustering algorithm will be applied to the data, and the cluster pairing, determines how the clusters from the portfolio will be paired with the clusters from the market.
 
-There are two possible clustering strategies: training the cluster algorithm on the portfolio and applying it to the market which will be called Train on Portfolio (\nameClusterStrategyA{}), and training and applying on all the data which will be called Train on All (\nameClusterStrategyB{}). Let us take the example of the KMeans algorithm using these two strategies applied on a fake study dataset, which is illustrated on Figure \ref{fig:cluster-strategy}. Assuming that all sub plots are on the same scale, in (\ref{fig:cluster-strategy:port-fit}) we see the portfolio clustered with its two centroids, in (\ref{fig:cluster-strategy:port-predict}) we can see the KMeans "predicting"\footnote{this is a fairly common name for the inference step of an algorithm in scikit-learn implementation} the clusters of all data with the centroids learned on (\ref{fig:cluster-strategy:port-fit}). This is the \nameClusterStrategyA{}. The \nameClusterStrategyB{} is represented on (\ref{fig:cluster-strategy:all}) where the KMeans trains and predicts on all data. We can see that the centroids are on different positions, as a result some companies are allocated on a different cluster relative to (\ref{fig:cluster-strategy:port-predict}). 
+There are two possible clustering strategies: training the cluster algorithm on the portfolio and applying it to the market, which will be called Train on Portfolio (\nameClusterStrategyA{}), and training and applying to all the data, which will be called Train on All (\nameClusterStrategyB{}). Let us take the example of the KMeans algorithm using these two strategies applied on a fake study dataset, which is illustrated on Figure \ref{fig:cluster-strategy}. Assuming that all sub plots are on the same scale, in \ref{fig:cluster-strategy:port-fit} we see the portfolio clustered with its two centroids, in \ref{fig:cluster-strategy:port-predict} we can see the KMeans "predicting"\footnote{this is a fairly common name for the inference step of an algorithm in scikit-learn implementation} the clusters of all data with the centroids learned on \ref{fig:cluster-strategy:port-fit}. This is the \nameClusterStrategyA{}. The \nameClusterStrategyB{} is represented on \ref{fig:cluster-strategy:all} where the KMeans trains and predicts to all data. We can see that the centroids are on different positions, as a result some companies are allocated on a different cluster relative to \ref{fig:cluster-strategy:port-predict}. 
 
 \begin{figure}[!ht]
     \begin{subfigure}{.5\linewidth}
@@ -84,9 +84,9 @@ There are two possible clustering strategies: training the cluster algorithm on 
     \label{fig:cluster-strategy}
 \end{figure}
 
-For the pairing there are also two possible ways: each cluster on the portfolio will be matched with its cluster on the market, let us call it One vs One (\nameClusterPairingA{}), and each cluster on the portfolio will run with the whole market, let us call it One vs All (\nameClusterPairingB{}). For instance, if we have a study with three clusters on the portfolio each with 50 companies each, and 150 companies for each cluster in the market, in \nameClusterPairingA{} the OT will run three times with a portfolio size of 50 and market size of 150; for \nameClusterPairingB{} the OT will run three times with a portfolio size of 50 and a market size of 450 (whole market for each cluster). Figure \ref{fig:cluster-pairing} shows a block diagram of this scenario.
+For the pairing there are also two possible ways: each cluster in the portfolio will be matched with its cluster in the market, let us call it One vs One (\nameClusterPairingA{}), and each cluster in the portfolio will run with the whole market, let us call it One vs All (\nameClusterPairingB{}). For instance, if we have a study with three clusters in the portfolio each with 50 companies each, and 150 companies for each cluster in the market, in \nameClusterPairingA{} the OT will run three times with a portfolio size of 50 and market size of 150; for \nameClusterPairingB{} the OT will run three times with a portfolio size of 50 and a market size of 450 (whole market for each cluster). Figure \ref{fig:cluster-pairing} shows a block diagram of this scenario.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
    \centering
    \includegraphics[width=7cm]{fig/ch3-cluster-pairing.png}
    \caption{Illustration of the cluster pairing. On the top is the \nameClusterPairingA{} and on the bottom the \nameClusterPairingB{}.}
@@ -106,28 +106,29 @@ To visualize the clusters on the studies, it is necessary to plot the data. But 
 
 Before applying the PCA, a preprocessing step was needed. Categorical features were converted to numeric using One Hot Encoding and all features were scaled using the Z-score Normalization\footnote{all of the data transformations functions used on this theses are from the Scikit-learn Python library \cite{scikit-learn}}.
 
-Figure \ref{fig:pca-plot} shows the results of the PCA plot for some studies using all features that OT uses on production environment (\ref{fig:pca-plot:all-features}), and PCA plot using only firmographics data for the sames studies (\ref{fig:pca-plot:firmographics}). Each study is a column, where the first row is the plot of the PCA for the portfolio data, the second row the PCA plot for the market data, and the third row is for both, using different colors to distinguish portfolio from market (blue is the market and orange the portfolio).
+Figure \ref{fig:pca-plot} shows the results of the PCA plot for some studies using all features that OT uses on production environment (\ref{fig:pca-plot:all-features}), and PCA plot using only firmographics data for the sames studies (\ref{fig:pca-plot:firmographics}). Each study is a column, where the first row is the plot of the PCA for the portfolio data, and the second row is for both, using different colors to distinguish portfolio from market (blue is the market and orange the portfolio).
 
-We can see that it is much more difficult to visualise the clusters on the all-features PCA plot. There are some examples where you see a clear boundary on the data, but if wee look to the firmographics plot these boundaries are much more defined. Moreover, if you take into account the business perspective, it makes sense to group the companies by their firmographics. For example, a study with one cluster with big companies from the state of São Paulo or another one with small companies from the state of Santa Catarina.
-
-Using the firmographics PCA plot, each study was assigned with a number of clusters manually. For instance, in Figure \ref{fig:pca-plot:firmographics}, from left to right, the number of clusters in the portfolio assigned are, respectively: 3, 4, 3, 2, 2.  
-
-\begin{figure}[h]
+\begin{figure}[!ht]
     \begin{subfigure}{\linewidth}
         \centering
-        \includegraphics[width=.9\linewidth]{fig/ch3-pca-plot-all-features.png}
+        \includegraphics[width=\linewidth]{fig/ch3-pca-plot-all-features.png}
         \caption{PCA plot using all features}
         \label{fig:pca-plot:all-features}
     \end{subfigure}
     \begin{subfigure}{\linewidth}
         \centering
-        \includegraphics[width=.9\linewidth]{fig/ch3-pca-plot-firmographics.png}
+        \includegraphics[width=\linewidth]{fig/ch3-pca-plot-firmographics.png}
         \caption{PCA plot using firmographics data}
         \label{fig:pca-plot:firmographics}
     \end{subfigure}
-    \caption{PCA plot for some studies. For each study (a column) the first row is only the portfolio data, the second row, only the market, and in the third row both (market in orage and portfolio in blue).}
+    \caption{PCA plot for some studies. For each study (a column) the first row is only the portfolio data, second row both market and portfolio (market in orange and portfolio in blue).}
     \label{fig:pca-plot}
 \end{figure}
+
+We can see that it is much more difficult to visualise the clusters on the all-features PCA plot. There are some examples where you see a clear boundary on the data, but if wee look to the firmographics plot these boundaries are much more defined. Moreover, if you take into account the business perspective, it makes sense to group the companies by their firmographics. For example, a study with one cluster with big companies from the state of São Paulo or another one with small companies from the state of Santa Catarina.
+
+Using the firmographics PCA plot, each study was assigned with a number of clusters manually. For instance, in Figure \ref{fig:pca-plot:firmographics}, from left to right, the number of clusters in the portfolio assigned are, respectively: 3, 4, 3, 2, 2.  
+
 
 \subsection{Cluster algorithm}
 \label{ch:cluster-algorithm}
@@ -177,7 +178,7 @@ In this last part of the chapter, it will be discussed about the experiments tha
 \subsection{\fullNameExperimentI{}}
 \label{ch:experiment-i}
 
-The experiment \nameExperimentI{} consists on using the clustering strategy \nameClusterStrategyA{} and cluster pairing \nameClusterPairingA{}. A cluster in a portfolio will be matched with its pair on the market, and each cluster, on a study, will generated a run of the OT. After the runs, all of the outputs will be joined into a single one. So, for the user, the interface still the same. But, internally, OT will split the study in $N$\footnote{$N$ is the number of clusters} smaller studies and then will aggregate the outputs. These modifications can be better understood when looking to the diagram on Figure \ref{fig:one-run-each-cluster}. 
+The experiment \nameExperimentI{} consists on using the clustering strategy \nameClusterStrategyA{} and cluster pairing \nameClusterPairingA{}. A cluster in a portfolio will be matched with its pair on the market, and each cluster, in a study, will generated a run of the OT. After the runs, all of the outputs will be joined into a single one. So, for the user, the interface still the same. But, internally, OT will split the study in $N$\footnote{$N$ is the number of clusters} smaller studies and then will aggregate the outputs. These modifications can be better understood when looking to the diagram on Figure \ref{fig:one-run-each-cluster}. 
 
 \begin{figure}[h]
    \centering
@@ -192,7 +193,7 @@ Another important modification made to the OT pipeline due to the \nameExperimen
 
 \subsection{\fullNameExperimentII{}}
 
-The second experiment consists in using the information of the clusters as an extra column in the features table used by the OT. It will not use any of the cluster pairing strategies (it uses the clustering strategy I, though). The experiment \nameExperimentII{} is much more simple than \nameExperimentI{}: there is no split on the study; it is not necessary an aggregation of the output; and it is not needed to define a minimum number to a study to run. The information of the clusters is joined with the features table that feed the RS algorithm. Figure \ref{fig:clusters-as-features} shows its simple modification.
+The second experiment consists in using the information of the clusters as an extra column in the features table used by the OT. It will not use any of the cluster pairing strategies (it uses the clustering strategy \nameClusterStrategyA{}, though). The experiment \nameExperimentII{} is much more simple than \nameExperimentI{}: there is no split on the study; it is not necessary an aggregation of the output; and it is not needed to define a minimum number to a study to run. The information of the clusters is joined with the features table that feed the RS algorithm. Figure \ref{fig:clusters-as-features} shows its simple modification.
 
 \begin{figure}[H]
    \centering
