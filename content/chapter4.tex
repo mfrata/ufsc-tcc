@@ -2,7 +2,7 @@
 
 In this chapter we will present the results of the experiments \nameExperimentI{} and \nameExperimentII{}, along with a discussion of the impact on the lift and similarity distributions of these experiments relative to the OT without the clustering.
 
-\section{Experiment \nameExperimentI}
+\section{Experiment \fullNameExperimentI{}}
 
 As seen on \ref{ch:experiment-i} this experiment was the one that creates sub-runs of the OT for each cluster in the portfolio. Also, it had to be created some heuristics to deal with clusters that did not have enough data to run. Using the "manual clustering", as discussed on \ref{ch:cluster-algorithm} the summary of the lift gain (how much the lift on the first decile increased or decreased relative to the OT without clustering) is presented on Table \ref{table:lift_gain_exp-i}. Figure \ref{fig:lift-hist-plot-exp-i} shows another perspective for this data through a histogram, excluding the outliers studies.
 
@@ -46,7 +46,7 @@ There are also some studies that are bolded. They represent the studies that bro
 We can see that only five studies had positive impact on the lift, and one of them is an outlier. The majority of the studies had a negative impact, six of them were sightly negative and fourteen worsened the lift considerably. It is important to notice that two studies did not present any changes on the lift with the clustering. The overall mean lift gain for \nameExperimentI{} is $-9,871 \%$.
 
 
-\section{Experiment \nameExperimentII{}}
+\section{Experiment \fullNameExperimentII{}}
 
 Now for the second experiment, which was the simple use of the clustering information as another feature. Using the same color scheme as Table \ref{table:lift_gain_exp-i}, Table \ref{table:lift_gain_exp-ii} shows the summary of the lift gains for the experiment \nameExperimentII{}. Figure \ref{fig:lift-hist-plot-exp-ii} this data in a histogram (without outliers studies).
 
@@ -87,8 +87,6 @@ We can see that, differently from \nameExperimentI{}, the majority of the studie
 
 \section{Similarity distributions}
 \label{ch:simi-distis}
-
-\newcommand{\simiDistWidth}{8cm}
 
 Now let us look at some of the similarity distributions plots for both experiments. These plots will have three curves: the market similarity in green, the holdout set in orange, and the portfolio in blue. Each topic of this section will address a group represented by the colors in the lift gain summary tables. 
 

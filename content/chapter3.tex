@@ -46,22 +46,42 @@ In this second part of the chapter it will be explained how the cluster analysis
 \subsection{Clustering strategy and pairing}
 
 % names for the cluster strategies
+\newcommand{\fullNameClusterStrategyA}{Train on Portfolio}
 \newcommand{\nameClusterStrategyA}{ToP}
+\newcommand{\fullNameClusterStrategyB}{Train on All}
 \newcommand{\nameClusterStrategyB}{ToA}
 % names for the cluster pairing
+\newcommand{\fullNameClusterPairingA}{One versus One}
 \newcommand{\nameClusterPairingA}{OvO}
+\newcommand{\fullNameClusterPairingB}{One versus All}
 \newcommand{\nameClusterPairingB}{OvA}
 
 
 The first thing to tackle was the definition of the clustering strategy and pairing. The clustering strategy dictates how the clustering algorithm will be applied to the data, and the cluster pairing, determines how the clusters from the portfolio will be paired with the clusters from the market.
 
-There are two possible clustering strategies: training the cluster algorithm on the portfolio and applying it to the market which will be called Train on Portfolio (\nameClusterStrategyA{}), and training and applying on all the data which will be called Train on All (\nameClusterStrategyB{}). Let us take the example of the KMeans algorithm using these two strategies applied on a fake study dataset, which is illustrated on Figure \ref{fig:cluster-strategy}. Assuming that all sub plots are on the same scale, in (I) we see the portfolio clustered with its two centroids, on (II) we can see the KMeans "predicting"\footnote{this is a fairly common name for the inference step of an algorithm in scikit-learn implementation} the clusters of all data with the centroids learned on (I). This is the \nameClusterStrategyA{}. The \nameClusterStrategyB{} is represented on (III) where the KMeans trains and predicts on all data. We can see that the centroids are on different positions, as a result some companies are allocated on a different cluster relative to (II). 
+There are two possible clustering strategies: training the cluster algorithm on the portfolio and applying it to the market which will be called Train on Portfolio (\nameClusterStrategyA{}), and training and applying on all the data which will be called Train on All (\nameClusterStrategyB{}). Let us take the example of the KMeans algorithm using these two strategies applied on a fake study dataset, which is illustrated on Figure \ref{fig:cluster-strategy}. Assuming that all sub plots are on the same scale, in (\ref{fig:cluster-strategy:port-fit}) we see the portfolio clustered with its two centroids, in (\ref{fig:cluster-strategy:port-predict}) we can see the KMeans "predicting"\footnote{this is a fairly common name for the inference step of an algorithm in scikit-learn implementation} the clusters of all data with the centroids learned on (\ref{fig:cluster-strategy:port-fit}). This is the \nameClusterStrategyA{}. The \nameClusterStrategyB{} is represented on (\ref{fig:cluster-strategy:all}) where the KMeans trains and predicts on all data. We can see that the centroids are on different positions, as a result some companies are allocated on a different cluster relative to (\ref{fig:cluster-strategy:port-predict}). 
 
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=9cm]{fig/ch3-cluster-strategy.png}
-   \caption{Fake study data set that shows how both clustering strategies work.}
-   \label{fig:cluster-strategy}
+\begin{figure}[!ht]
+    \begin{subfigure}{.5\linewidth}
+        \centering
+        \includegraphics[width=4cm]{fig/ch3-cluster-strategy-port-fit.png}
+        \caption{KMeans learning the centroids from portfolio data.}
+        \label{fig:cluster-strategy:port-fit}
+    \end{subfigure}
+    \begin{subfigure}{.5\linewidth}
+        \centering
+        \includegraphics[width=4cm]{fig/ch3-cluster-strategy-port-predict.png}
+        \caption{KMeans "prediction" to all data, with centroids learned from (\subref{fig:cluster-strategy:port-fit}).}
+        \label{fig:cluster-strategy:port-predict}
+    \end{subfigure}\\[1ex]
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=4cm]{fig/ch3-cluster-strategy-all.png}
+        \caption{KMeans learning and predicting to all data.}
+        \label{fig:cluster-strategy:all}
+    \end{subfigure}
+    \caption{Fake study data set that shows how both clustering strategies work.}
+    \label{fig:cluster-strategy}
 \end{figure}
 
 For the pairing there are also two possible ways: each cluster on the portfolio will be matched with its cluster on the market, let us call it One vs One (\nameClusterPairingA{}), and each cluster on the portfolio will run with the whole market, let us call it One vs All (\nameClusterPairingB{}). For instance, if we have a study with three clusters on the portfolio each with 50 companies each, and 150 companies for each cluster in the market, in \nameClusterPairingA{} the OT will run three times with a portfolio size of 50 and market size of 150; for \nameClusterPairingB{} the OT will run three times with a portfolio size of 50 and a market size of 450 (whole market for each cluster). Figure \ref{fig:cluster-pairing} shows a block diagram of this scenario.
@@ -78,6 +98,7 @@ Through a business view, it makes more sense to adopt the \textbf{\nameClusterSt
 On cluster pairing \nameClusterStrategyB{} the market is replicated for each cluster, leading each company to be scored $N$ times ($N$ being the number of clusters). Hence, there could be cases where one company has a high score in a cluster while, at the same time, have a low score in other one. To not deal with these cases the \textbf{\nameClusterPairingA{}} was chosen for this work.
 
 \subsection{Number of clusters}
+\label{ch:number-of-clusters}
 
 The second aspect of the cluster analysis was the number of clusters for each study, since most of the cluster algorithms need this information upfront. Even though there are some research on evaluating the number of clusters automatically \cite{yu2014automatic}, there are no production-ready solutions. There are, however, methods like Elbow method and Silhouette \cite{kodinariya2013review} that help with the determination of the number of clusters. Considering that the objective is to analyse the impact of the clustering on the RS and not the cluster analysis itself and that there are only up to thirty studies, it was decided to set the number of the clusters \textbf{manually}.
 
@@ -85,47 +106,75 @@ To visualize the clusters on the studies, it is necessary to plot the data. But 
 
 Before applying the PCA, a preprocessing step was needed. Categorical features were converted to numeric using One Hot Encoding and all features were scaled using the Z-score Normalization\footnote{all of the data transformations functions used on this theses are from the Scikit-learn Python library \cite{scikit-learn}}.
 
-Figure \ref{fig:pca-plot} shows the results of the PCA plot for some studies using all features that OT uses on production environment (top), and PCA plot using only firmographics features for the sames studies (bottom). Each study is a column, where the first row is the plot of the PCA for the portfolio data, the second row the PCA plot for the market data, and the third row is for both, using different colors to distinguish portfolio from market (blue is the market and orange the portfolio).
+Figure \ref{fig:pca-plot} shows the results of the PCA plot for some studies using all features that OT uses on production environment (\ref{fig:pca-plot:all-features}), and PCA plot using only firmographics data for the sames studies (\ref{fig:pca-plot:firmographics}). Each study is a column, where the first row is the plot of the PCA for the portfolio data, the second row the PCA plot for the market data, and the third row is for both, using different colors to distinguish portfolio from market (blue is the market and orange the portfolio).
 
 We can see that it is much more difficult to visualise the clusters on the all-features PCA plot. There are some examples where you see a clear boundary on the data, but if wee look to the firmographics plot these boundaries are much more defined. Moreover, if you take into account the business perspective, it makes sense to group the companies by their firmographics. For example, a study with one cluster with big companies from the state of São Paulo or another one with small companies from the state of Santa Catarina.
 
-Using the firmographics PCA plot, each study was assigned with a number of clusters manually. For instance, on Figure \ref{fig:pca-plot}, from left to right, the number of clusters in the portfolio assigned are, respectively: 3, 3, 3, 2, 4, 3, 2, 2.  
+Using the firmographics PCA plot, each study was assigned with a number of clusters manually. For instance, in Figure \ref{fig:pca-plot:firmographics}, from left to right, the number of clusters in the portfolio assigned are, respectively: 3, 4, 3, 2, 2.  
 
 \begin{figure}[h]
-   \centering
-   \includegraphics[width=\linewidth]{fig/ch3-pca-plot.png}
-   \caption{PCA plot for the studies. In the top there are the plots using all features and In the bottom, only using firmographics features. For each plot (a column) the first row is only for the portfolio, the second cell, only for the market, and in the third cell for both.}
-   \label{fig:pca-plot}
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{fig/ch3-pca-plot-all-features.png}
+        \caption{PCA plot using all features}
+        \label{fig:pca-plot:all-features}
+    \end{subfigure}
+    \begin{subfigure}{\linewidth}
+        \centering
+        \includegraphics[width=.9\linewidth]{fig/ch3-pca-plot-firmographics.png}
+        \caption{PCA plot using firmographics data}
+        \label{fig:pca-plot:firmographics}
+    \end{subfigure}
+    \caption{PCA plot for some studies. For each study (a column) the first row is only the portfolio data, the second row, only the market, and in the third row both (market in orage and portfolio in blue).}
+    \label{fig:pca-plot}
 \end{figure}
 
 \subsection{Cluster algorithm}
 \label{ch:cluster-algorithm}
 
-The last aspect of the cluster analysis was the choice of the algorithm. From the firmographics two principal components data, six clusters algorithms were applied on all the studies: KMeans, Gaussian Mixture, Bayesian Gaussian Mixture, Agglomerative Clustering, Spectral Clustering, DBSCAN\footnote{all of these implementations came from the scikit-learn python library \cite{scikit-learn}}. All of them were computed with default parameters and the same seed.
+The last aspect of the cluster analysis was the choice of the algorithm. Six clusters algorithms were applied to all the studies: KMeans, Gaussian Mixture, Bayesian Gaussian Mixture, Agglomerative Clustering, Spectral Clustering, DBSCAN\footnote{all of these implementations came from the scikit-learn python library \cite{scikit-learn}}. All of them were computed to the firmographics data transformed by the PCA with default parameters.
 
 The last three did not run on some studies that have a market size in an order of magnitude of dozen of thousands companies, due to memory error\footnote{all the algorithms were running on a machine with 250 GB of RAM}. Because of their high memory complexity \cite{franti2006fast}, \cite{ester1996density}, \cite{yan2009fast}, they were discarded.
 
-The studies were also clustered manually in order to be used as a benchmark for the algorithms. Since most of the PCA plots present a regression characteristic, these boundaries were lines equations. Figure \ref{fig:clustering-studies} shows the results for some of the studies using "Manual Clustering", KMeans, Gaussian Mixture (GMM) and Bayesian Gaussian Mixture (BayesianGM).
+The studies were also clustered manually in order to be used as a benchmark for the algorithms. Since most of the PCA plots present a regression characteristic, these boundaries were lines equations. Figure \ref{fig:cluster-algo} shows the results for some of the studies using "Manual Clustering", KMeans, Gaussian Mixture Model (GMM) and Bayesian Gaussian Mixture (Bayesian GM).
 
-As we can see the algorithms did not get the shape of the data in some of the studies. The Bayesian and GMM had better results relative to the KMeans. But they did not assign the clusters as expected, for instance, on the third and sixth row of Figure \ref{fig:clustering-studies}. Due to these reasons and the same argument explained on the number of clusters discussion - we are interested on the results on the RS and not in the cluster analysis itself - it was decided by the team to start to the experiments using the "Manual Clustering".
+The algorithms did not get the expected shape of the data in some of the studies. The Bayesian and GMM had better results relative to the KMeans, \ref{fig:cluster-algo:ex1} illustrates this example. But they did not assign the clusters as expected to other studies, as seen in \ref{fig:cluster-algo:ex2} and \ref{fig:cluster-algo:ex3}. Due to these reasons and the same argument explained in section \ref{ch:number-of-clusters} - we are interested on the results on the RS and not in the cluster analysis itself - it was decided by the team to start to the experiments using the "Manual Clustering".
 
 \begin{figure}[H]
-   \centering
-   \includegraphics[width=\linewidth]{fig/ch3-clustering-studies.png}
-   \caption{Results of the clustering on the first two principal components of some studies.}
-   \label{fig:clustering-studies}
+    \begin{subfigure}{\linewidth}
+        \raggedright
+        \includegraphics[width=9cm]{fig/ch3-cluster-algo-ex1.png}
+        \caption{}
+        \label{fig:cluster-algo:ex1}
+    \end{subfigure}
+    \begin{subfigure}{\linewidth}
+        \raggedleft
+        \includegraphics[width=9cm]{fig/ch3-cluster-algo-ex2.png}
+        \caption{}
+        \label{fig:cluster-algo:ex2}
+    \end{subfigure}
+    \begin{subfigure}{\linewidth}
+        \raggedright
+        \includegraphics[width=9cm]{fig/ch3-cluster-algo-ex3.png}
+        \caption{}
+        \label{fig:cluster-algo:ex3}
+    \end{subfigure}
+    \caption{Results of the clustering on the first two principal components of three studies.}
+    \label{fig:cluster-algo}
 \end{figure}
 
 \section{Experiments}
 
 % names for the experiments
+\newcommand{\fullNameExperimentI}{Run per Cluster}
 \newcommand{\nameExperimentI}{RpC}
+\newcommand{\fullNameExperimentII}{Cluster as Feature}
 \newcommand{\nameExperimentII}{CaF}
 
 
-In this last part of the chapter, it will be discussed about the experiments that were developed to test the clustering in the OT. After the analysis of the clusters, two experiments were performed, as detailed next: One run per Cluster (\nameExperimentI{}) and Cluster as Features (\nameExperimentII{}).
+In this last part of the chapter, it will be discussed about the experiments that were developed to test the clustering in the OT. After the analysis of the clusters, two experiments were performed, as detailed next: \fullNameExperimentI{} (\nameExperimentI{}) and \fullNameExperimentII{} (\nameExperimentII{}).
 
-\subsection{One run per cluster}
+\subsection{\fullNameExperimentI{}}
 \label{ch:experiment-i}
 
 The experiment \nameExperimentI{} consists on using the clustering strategy \nameClusterStrategyA{} and cluster pairing \nameClusterPairingA{}. A cluster in a portfolio will be matched with its pair on the market, and each cluster, on a study, will generated a run of the OT. After the runs, all of the outputs will be joined into a single one. So, for the user, the interface still the same. But, internally, OT will split the study in $N$\footnote{$N$ is the number of clusters} smaller studies and then will aggregate the outputs. These modifications can be better understood when looking to the diagram on Figure \ref{fig:one-run-each-cluster}. 
@@ -141,7 +190,7 @@ To clarify this idea of the Experiment \nameExperimentI{}, let us take the examp
 
 Another important modification made to the OT pipeline due to the \nameExperimentI{} was the definition of a minimum size to a study. There could be cases where, in a portfolio, a cluster has a small number of companies that is not enough for the RS algorithm to create the score. If a cluster does not have the minimum data in a set to run, all of the data is discarded.
 
-\subsection{Clusters as features}
+\subsection{\fullNameExperimentII{}}
 
 The second experiment consists in using the information of the clusters as an extra column in the features table used by the OT. It will not use any of the cluster pairing strategies (it uses the clustering strategy I, though). The experiment \nameExperimentII{} is much more simple than \nameExperimentI{}: there is no split on the study; it is not necessary an aggregation of the output; and it is not needed to define a minimum number to a study to run. The information of the clusters is joined with the features table that feed the RS algorithm. Figure \ref{fig:clusters-as-features} shows its simple modification.
 
